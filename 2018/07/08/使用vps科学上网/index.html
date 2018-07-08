@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用vps科学上网 VPN 与 Shadowsocks 的区别VPN顾名思义，虚拟专网，你接入VPN就是接入了一个专有网络，那么你访问网络都是从这个专有网络的出口出去，好比你在家， 你家路由器后面的网络设备是在同一个网络，而VPN则是让你的设备进入了另一个网络。同时你的IP地址也变成了由VPN分配的一个IP地址。 通常是一个私网地址。你和VPN服务器之间的通信是否加密取决于连接VPN的具体方式/协">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/07/08/使用vps科学上网/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="使用vps科学上网 VPN 与 Shadowsocks 的区别VPN顾名思义，虚拟专网，你接入VPN就是接入了一个专有网络，那么你访问网络都是从这个专有网络的出口出去，好比你在家， 你家路由器后面的网络设备是在同一个网络，而VPN则是让你的设备进入了另一个网络。同时你的IP地址也变成了由VPN分配的一个IP地址。 通常是一个私网地址。你和VPN服务器之间的通信是否加密取决于连接VPN的具体方式/协">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/pIB5Tdc.jpg">
+<meta property="og:updated_time" content="2018-07-08T11:19:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="使用vps科学上网 VPN 与 Shadowsocks 的区别VPN顾名思义，虚拟专网，你接入VPN就是接入了一个专有网络，那么你访问网络都是从这个专有网络的出口出去，好比你在家， 你家路由器后面的网络设备是在同一个网络，而VPN则是让你的设备进入了另一个网络。同时你的IP地址也变成了由VPN分配的一个IP地址。 通常是一个私网地址。你和VPN服务器之间的通信是否加密取决于连接VPN的具体方式/协">
+<meta name="twitter:image" content="https://i.imgur.com/pIB5Tdc.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-使用vps科学上网" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/08/使用vps科学上网/" class="article-date">
+  <time datetime="2018-07-08T11:21:06.609Z" itemprop="datePublished">2018-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用vps科学上网"><a href="#使用vps科学上网" class="headerlink" title="使用vps科学上网"></a>使用vps科学上网</h1><hr>
+<h2 id="VPN-与-Shadowsocks-的区别"><a href="#VPN-与-Shadowsocks-的区别" class="headerlink" title="VPN 与 Shadowsocks 的区别"></a>VPN 与 Shadowsocks 的区别</h2><pre><code>VPN顾名思义，虚拟专网，你接入VPN就是接入了一个专有网络，那么你访问网络都是从这个专有网络的出口出去，好比你在家，
+你家路由器后面的网络设备是在同一个网络，而VPN则是让你的设备进入了另一个网络。同时你的IP地址也变成了由VPN分配的一个IP地址。
+通常是一个私网地址。你和VPN服务器之间的通信是否加密取决于连接VPN的具体方式/协议。
+</code></pre><hr>
+<pre><code>Shadowsocks的Sock5代理服务器则是把你的网络数据请求通过一条连接你和代理服务器之间的通道，由服务器转发到目的地。
+你没有加入任何新的网络，只是http/socks数据经过代理服务器的转发送出，并从代理服务器接收回应。
+你与代理服务器通信过程不会被额外处理，如果你用https，那本身就是加密的
+</code></pre><hr>
+<p><strong>Shadowsocks的翻墙原理</strong></p>
+<pre><code>天朝局域网通过GFW隔离了我们与外界的交流，当然，这个隔离并非完全隔离，而是选择性的，天朝不希望你上的网站就直接阻断。
+每一个网络请求都是有数据特征的，不同的协议具备不同的特征，比如 HTTP/HTTPS 这类请求，会很明确地告诉 GFW 它们要请求哪个域名；
+再比如 TCP 请求，它只会告诉 GFW 它们要请求哪个 IP。 GFW 封锁包含多种方式，最容易操作也是最基础的方式便是域名黑白名单，
+在黑名单内的域名不让通过，IP 黑白名单也是这个道理。如果你有一台国外服务器不在 GFW 的黑名单内，天朝局域网的机器就可以跟这一台机器通讯。
+那么一个翻墙的方案就出来了：境内设备与境外机器通讯，境内想看什么网页，就告诉境外的机器，让境外机器代理抓取，然后送回来，
+我们要做的就是保证境内设备与境外设备通讯时不被 GFW 怀疑和窃听
+</code></pre><hr>
+<center><strong>Shadowscoks原理图</strong></center><br><center><img src="https://i.imgur.com/pIB5Tdc.jpg" alt="Shadowsocks原理图"></center>
+
+<h2 id="一、购买vps服务器"><a href="#一、购买vps服务器" class="headerlink" title="一、购买vps服务器"></a>一、购买vps服务器</h2><p><strong>推荐较大叫稳定的服务产商</strong></p>
+<pre><code>1、http://www.vultr.com(Vultr)
+2、https://bandwagonhost.com(搬瓦工)
+国内的话阿里云、腾讯云都可以
+
+选择服务器地址可以先测试下延迟时间ping命令
+
+购买完成后,服务产商会发送ip和密码到自己账号或邮箱
+</code></pre><h2 id="二、终端Xshell连接vps服务器-安装shadowsocksr"><a href="#二、终端Xshell连接vps服务器-安装shadowsocksr" class="headerlink" title="二、终端Xshell连接vps服务器,安装shadowsocksr"></a>二、终端Xshell连接vps服务器,安装shadowsocksr</h2><p><strong>1、登入服务器</strong><br>    ssh root@你的服务器ip地址</p>
+<p><strong>2、安装shadowsocksr软件</strong></p>
+<pre><code>wget -N --no-check-certificate https://softs.fun/Bash/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh
+bash ssr.sh
+</code></pre><p><strong>shadowsocks介绍</strong></p>
+<pre><code>https://en.wikipedia.org/wiki/Shadowsocks
+
+shadowsocksr python版本 github 
+https://github.com/shadowsocksr-backup/shadowsocksr
+</code></pre><h2 id="三、VPS加速服务器-谷歌BBR加速"><a href="#三、VPS加速服务器-谷歌BBR加速" class="headerlink" title="三、VPS加速服务器(谷歌BBR加速)"></a>三、VPS加速服务器(谷歌BBR加速)</h2><pre><code>wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh
+chmod +x bbr.sh
+./bbr.sh
+</code></pre><p><strong>google bbr 加速git 地址</strong><br>    <a href="https://github.com/google/bbr" target="_blank" rel="noopener">https://github.com/google/bbr</a></p>
+<h2 id="四、使用shadowsocksr客户端方便连接服务器"><a href="#四、使用shadowsocksr客户端方便连接服务器" class="headerlink" title="四、使用shadowsocksr客户端方便连接服务器"></a>四、使用shadowsocksr客户端方便连接服务器</h2><pre><code>windows地址:https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases
+mac地址:https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases
+linux地址:https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/08/使用vps科学上网/" data-id="cjjcqz5a60003r8l2znk4dn7r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/07/Linux学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux 学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/08/使用vps科学上网/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/Linux学习笔记/">Linux 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/Git学习笔记/">Git学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/Docker学习笔记/">Docker 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
