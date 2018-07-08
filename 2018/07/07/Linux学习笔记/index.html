@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Linux 学习笔记 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Linux 学习笔记1、linux简介Linux主要发行版: 2、虚拟机简介和虚拟机上安装Centos虚拟机推荐:VMware Workstation、Virtualbox linux发行版有很多:推荐使用Centos学习  VMware上有一个vmtools工具,安装了此工具可以让本机与虚拟机上的操作系统完成共享剪切板(复制粘贴)和共享文件的功能 XShell和Xftp安装： XShell是一款">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/07/07/Linux学习笔记/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linux 学习笔记1、linux简介Linux主要发行版: 2、虚拟机简介和虚拟机上安装Centos虚拟机推荐:VMware Workstation、Virtualbox linux发行版有很多:推荐使用Centos学习  VMware上有一个vmtools工具,安装了此工具可以让本机与虚拟机上的操作系统完成共享剪切板(复制粘贴)和共享文件的功能 XShell和Xftp安装： XShell是一款">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-07T13:52:00.486Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 学习笔记">
+<meta name="twitter:description" content="Linux 学习笔记1、linux简介Linux主要发行版: 2、虚拟机简介和虚拟机上安装Centos虚拟机推荐:VMware Workstation、Virtualbox linux发行版有很多:推荐使用Centos学习  VMware上有一个vmtools工具,安装了此工具可以让本机与虚拟机上的操作系统完成共享剪切板(复制粘贴)和共享文件的功能 XShell和Xftp安装： XShell是一款">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/Linux学习笔记/" class="article-date">
+  <time datetime="2018-07-07T13:47:35.482Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux 学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux-学习笔记"><a href="#Linux-学习笔记" class="headerlink" title="Linux 学习笔记"></a>Linux 学习笔记</h1><h2 id="1、linux简介"><a href="#1、linux简介" class="headerlink" title="1、linux简介"></a>1、linux简介</h2><pre><code>Linux主要发行版:
+</code></pre><h2 id="2、虚拟机简介和虚拟机上安装Centos"><a href="#2、虚拟机简介和虚拟机上安装Centos" class="headerlink" title="2、虚拟机简介和虚拟机上安装Centos"></a>2、虚拟机简介和虚拟机上安装Centos</h2><pre><code>虚拟机推荐:VMware Workstation、Virtualbox
+linux发行版有很多:推荐使用Centos学习
+
+VMware上有一个vmtools工具,安装了此工具可以让本机与虚拟机上的操作系统完成共享剪切板(复制粘贴)和共享文件的功能
+</code></pre><p><strong>XShell和Xftp安装：</strong></p>
+<pre><code>XShell是一款强大的安全终端,支持多种协议,可以通过网络连接到远程服务器进行操作
+Xftp是一个基于windows平台的功能强大的SFTP、FTP文件传输软件.使用了Xftp以后,windows用户能安全地在UNIX/Linux和windows之间传输文件
+</code></pre><h3 id="3、linux文件系统目录结构"><a href="#3、linux文件系统目录结构" class="headerlink" title="3、linux文件系统目录结构"></a>3、linux文件系统目录结构</h3><pre><code>linux的文件系统是采用层级式的树状目录结构,在此结构中最上层的是根目录&quot;/&quot;,然后在此目录下创建其他目录。
+</code></pre><p><strong>在linux世界里,一切皆文件</strong></p>
+<pre><code>![linux文件目录](https://i.imgur.com/7k8buyZ.jpg)
+</code></pre><p><strong>重点几个目录</strong></p>
+<pre><code>/bin(/usr/bin、、usr/local/bin) 这个目录存放经常使用命令
+/home             存放普通用户的主目录
+/root             root用户的主目录
+/etc            所有系统管理所需要的配置文件和子目录
+/usr     
+/boot             存放着linux启动时的一些核心文件
+/media             linux系统会自动识别一些设备,例如U盘、光驱当识别后linux会把识别的设备挂载到这个目录
+/mnt            系统提供该目录是为了让用户零食挂载别的文件系统的,我们可以将外部的存储设备挂载在/mnt/上
+/opt             这是给主机额外安装软件所放置的目录
+/var             这个目录中存放着不断扩充着内容,系统将经常修改的文件放在这个目录,包括各种日志文件
+</code></pre><h2 id="5、VI和VIM使用"><a href="#5、VI和VIM使用" class="headerlink" title="5、VI和VIM使用"></a>5、VI和VIM使用</h2><p><strong>vi和vim常用三种模式</strong></p>
+<pre><code>正常模式:以vi打开一个文件直接进入到正常模式
+插入模式:在正常模式下按下i字母之后会进入到编辑模式
+命令行模式:在这个模式下,可以提供你相关指令,完成读取、存盘、替换、离开vim、显示行号等操作.
+</code></pre><h2 id="6、linux用户管理"><a href="#6、linux用户管理" class="headerlink" title="6、linux用户管理"></a>6、linux用户管理</h2><p>创建用户与制定密码</p>
+<pre><code>useradd name
+1)当创建用户成功后,会自动创建和用户同名的home目录
+2)可以通过useradd -d 目录名 用户名,来创建用户指定home目录
+</code></pre><p>指定/修改密码</p>
+<pre><code>passwd 用户名
+tip:受权限控制
+</code></pre><p>删除用户</p>
+<pre><code>userdel 用户名
+</code></pre><p>查询用户信息</p>
+<pre><code>id 用户名
+</code></pre><p>切换用户</p>
+<pre><code>在操作linux中,如果当前用户权限不够时,可以通过su -指令切换到高权限用户.
+su - 切换用户名
+tip：
+1、从权限高的用户切换到权限低的用户不需要输入密码,反之需要.
+2、当需要返回到原来用户时,使用exit指令
+</code></pre><p>查看当前登入用户</p>
+<pre><code>who am i
+</code></pre><p><strong>用户组:类似角色,系统可以对有多个共性的多个用户进行统一管理</strong></p>
+<p>新增用户组</p>
+<pre><code>groupadd 组名
+</code></pre><p>删除用户组</p>
+<pre><code>groupdel 组名
+</code></pre><p>新增用户时直接指定组名</p>
+<pre><code>useradd -g 组名 用户名
+</code></pre><p>修改用户的组</p>
+<pre><code>usermod -g 组名 用户名
+</code></pre><p>用户和组的相关文件</p>
+<pre><code>/etc/passwd 文件
+/etc/shadow 文件
+/etc/group  文件
+</code></pre><h2 id="7、linux常用命令"><a href="#7、linux常用命令" class="headerlink" title="7、linux常用命令"></a>7、linux常用命令</h2><p>linux关机&amp;重启命令</p>
+<pre><code>shutdown -h now (立即关机)
+shutdown -h 2      (两分钟后关机)
+shutdown -r now    (现在重启计算机)
+halt            (关机)
+reboot             (现在重启计算机)
+sync             (把内存的数据同步到磁盘)
+tip:通常关机或重启时都应该执行该命令
+</code></pre><p>用户登入与注销:</p>
+<pre><code>登入时尽量少用root账号登入,通常开发没有root权限,可以使用普通用户登入,如果需要更高权限可以使用su -用户名来切换用户身份
+用户注销可以直接使用logout命令(图形界面运行无效,只有在运行级别为3时有效)
+</code></pre><p>linux运行级别和找回root密码</p>
+<p>linux中包含七个运行级别:</p>
+<pre><code>0:关机
+1：单用户[无需输入密码可登入系统,必须是在物理机上操作不能远程操作]
+2：多用户状态没有网络服务
+3：多用户状态有网络服务
+4：系统未使用保留
+5：图形界面
+6：系统重启
+常用运行级别是3和5,,如果要修改默认的运行级别
+/etc/inittab 编辑
+命令:init 级别
+</code></pre><p>linux帮助命令</p>
+<pre><code>man 指令获取帮组信息
+    基本用法:man [命令或配置文件]
+
+help指令
+help 命令
+tip:如果看不懂Google更直接
+</code></pre><p>pwd命令</p>
+<pre><code>功能:显示当前工作目录的绝对路径
+</code></pre><p>ls命令</p>
+<pre><code>功能:显示当前目录或文件下的信息
+    ls -a：显示当前目录所有的文件和目录,包括隐藏文件
+    ls -l：以列表的方式显示信息
+</code></pre><p>cd命令</p>
+<pre><code>功能:切换目录
+    cd ~：回到用户所在home目录
+    cd ..:返回当前目录的上一级目录
+</code></pre><p>mkdir命令</p>
+<pre><code>功能:创建目录
+    mkdir -p：创建多级目录
+</code></pre><p>rmdir命令</p>
+<pre><code>功能:删除目录(必须是空目录)
+    tip：如果目录下有文件无法删除,如果要删除包含文件的目录,可以使用rm -rf 指令
+</code></pre><p>touch命令</p>
+<pre><code>功能:创建空文件(类似window下新建文件)
+    touch filename
+</code></pre><p>cp命令</p>
+<pre><code>功能:拷贝文件到指定目录
+    cp [选项] source dest
+    cp -r:递归复制整个目录
+
+    cp /home/a.txt /a.txt
+    cp -r /home/mydir /mydir
+</code></pre><p>rm命令</p>
+<pre><code>功能:删除文件或目录
+    rm [选项] 删除的文件或目录
+
+    rm -r：递归删除整个目录
+    rm -f：强制删除不提示
+</code></pre><p>mv命令</p>
+<pre><code>功能:移动文件或目录(重命名功能)
+    mv oldfile newfile
+</code></pre><p>cat命令</p>
+<pre><code>功能:查看文件内容
+    cat -n:显示行号
+</code></pre><p>more命令</p>
+<pre><code>功能:以全屏的方式按页显示文本文件的内容
+</code></pre><p>less命令</p>
+<pre><code>功能:分屏查看文件内容
+tip:功能与more类似,但是并不是一次把所有文件都加载出来,对于大文件具有较高的效率
+</code></pre><p>echo命令</p>
+<pre><code>功能:输出内容到控制台
+</code></pre><p>head命令</p>
+<pre><code>功能:显示文件的开头部分,默认显示前10行内容
+    head -n:指定显示文件开头行数
+    head -n 20 myfile
+</code></pre><p>tail命令</p>
+<pre><code>功能:显示文件的尾部,默认显示文件最后10行内容
+    tail -n:指定显示文件尾部行数
+    tail -f:实时追踪文件的更新
+    实用命令:tail -f -n 10 myfile
+</code></pre><p>ln命令</p>
+<pre><code>功能:给文件创建一个软链(软链接类似window的快捷方式)
+    ln -s 源文件 软链名称
+</code></pre><p>history命令</p>
+<pre><code>功能:查看已经执行过的命令
+    history
+</code></pre><p>date命令</p>
+<pre><code>功能:查看日期
+    date
+    date +%Y
+    date &quot;+%Y-%m-%d %H:%M:%S&quot;
+</code></pre><p>cal命令</p>
+<pre><code>功能:查看日历
+</code></pre><p>find命令</p>
+<pre><code>功能:查询指定目录下的文件或目录
+    find -name:查找指定的文件名查找文件
+    find -user:查询输入指定用户名的文件
+    find -size:查找指定的文件大小的文件
+</code></pre><p>locate命令</p>
+<pre><code>功能:快速定位文件路径
+    updatedb
+    locate hello.txt
+    tip:locate查询指令速度很快,其会建立db来存储文件路径.
+</code></pre><p><strong>grep命令</strong></p>
+<pre><code>功能:过滤查找,针对的文件里面的内容,通常可以结合管道符来操作
+    grep -n:显示匹配行和行号
+    grep -i:忽略大小写
+</code></pre><p>重定向(&gt;)与追加(&gt;&gt;)</p>
+<p><strong>管道符 |  </strong></p>
+<pre><code>功能:将前一个命令处理的结果传输给后面的命令处理
+    grep &quot;java&quot;|&gt;test.txt
+</code></pre><p><strong>压缩和解压指令</strong></p>
+<pre><code>gzip&amp;gunzip
+    gzip myfile(压缩文件为myfile.gz,源文件将不存在)
+    gunzip myfile.gz(解压缩文件myfile.gz为myfile)
+
+zip&amp;unzip
+    zip [选项] xxx.zip 需要压缩的文件 (压缩文件和目录的命令)
+    -r：递归压缩
+
+    unzip [选项] xxx.zip (解压缩文件)
+    -d：指定解压后文件存放的目录
+
+tar指令
+功能:tar指令是打包指令,最后打包后的文件是.tar.gz的文件
+tar [选项] xxx.tar.gz
+-c:产生.tar打包文件
+-v:显示详细信息
+-f:指定压缩后的文件名
+-z:打包同时压缩
+-x:解包.tar文件
+
+实用命令:
+tar –xvf 解压
+tar -cvfz 压缩并打包
+</code></pre><h2 id="8、权限管理"><a href="#8、权限管理" class="headerlink" title="8、权限管理"></a>8、权限管理</h2><p><strong>在linux中每个用户都必须属于一个组,不能独立于组外.在linux中每个文件有所有者、所在组、其它组的概念.</strong></p>
+<p>修改文件所有者</p>
+<pre><code>chown 用户名 文件名
+修改文件所在组
+chgrp 组名 文件名
+</code></pre><p><strong>权限的基本介绍</strong></p>
+<pre><code>todo image link ll 命令
+
+1:第一位表示文件类型(d,-,c,b)
+2:2-4三位表示文件所有者拥有该文件的权限
+3:4-7三位表示文件所属组拥有该文件的权限
+4:5-10三位表示其它用户拥有该文件的权限
+
+rwx权限介绍
+r:表示读取查看(read) 数值4
+w:表示写修改(write)    数值2
+x:表示执行(execute)    数值1
+
+TODO 截图在图片中编辑
+</code></pre><p>修改权限 chmod</p>
+<pre><code>第一种方式:+、-、=变更权限(u:所有者、g:所属组、o:其他人、a:所有人(ugo))
+chmod u=rwx,g=rx,o=x
+chmod u+w
+chmod a-x
+
+第二种方式:通过数字来变更权限
+r=4,w=2,x=1
+chmod u=rwx,g=rx,o=x 等价 chmod 751
+</code></pre><p>修改文件所有者</p>
+<pre><code>chmod username file
+</code></pre><p>修改文件所属组</p>
+<pre><code>chmod group file
+</code></pre><h2 id="9、任务调度介绍与使用"><a href="#9、任务调度介绍与使用" class="headerlink" title="9、任务调度介绍与使用"></a>9、任务调度介绍与使用</h2><p>crontab介绍</p>
+<pre><code>任务调度:是指系统在某个时间执行的特定的没给你了那个或程序
+任务调度文件在/etc/crontab中
+</code></pre><p>基本语法</p>
+<pre><code>crontab [选项]
+-e:编辑crontab定时任务
+-l:查询crontab任务
+-r:删除当前用户所有crontab任务
+</code></pre><p><strong>Cron表达式</strong></p>
+<pre><code>Cron有不同语法格式:linux默认的语法格式为
+Minutes(1~59) Hours(1~23) DayofMonth(1~31) Month(1~12) DayofWeek(0~6)
+
+参数说明
+*         表示任何时间                &quot;* * * * *  命令&quot; 每分钟执行一次
+,        代表不连续的时间               &quot;0 1,6,21 * * * 命令&quot; 每天一点,六点,晚上九点执行
+-        代表连续的时间范围           &quot;5 3 * * 1-5 命令&quot; 表示周一到周五凌晨3点零5执行
+*/n     表示每隔多久执行一次         &quot;*/3 * * * * 命令&quot; 表示每隔三分钟执行一次
+
+crontab 相关指令:
+crontab -r:终止任务调度
+crontab -l:列出当前有哪些任务调度
+service crond restart 重启任务调度
+</code></pre><h2 id="10、linux磁盘分区介绍与实操"><a href="#10、linux磁盘分区介绍与实操" class="headerlink" title="10、linux磁盘分区介绍与实操"></a>10、linux磁盘分区介绍与实操</h2><p>分区方式</p>
+<pre><code>一、mbr分区(早期)
+1、最多支持四个主分区
+2、系统只能安装在主分区
+3、扩展分区要占一个主分区
+4、MBR最大只支持2TB
+
+二、gtp分区(主流)
+1、支持无线多个主分区
+2、最大支持18EP容量(1EP=1024PB,1PB=1024TB,1TB=1024GB)
+</code></pre><p><strong>linux分区</strong></p>
+<pre><code>1、对linux来说无论有几个分区,它归根结底只有一个根目录,一个独立且唯一的文件结构,linux中每个分区都是用来组成整个文件系统的一部分
+
+2、linux是采用一种叫载入的处理方式,将一个分区和一个目录关联起来.挂载与卸载分区
+
+linux硬盘分为IDE硬盘和SCSI硬盘,目前主流是SCSI硬盘
+
+硬盘标识符为sdx~
+sda1:第一个硬盘的第一个分区
+sdb2:第二个硬盘的第二个分区
+</code></pre><p>查看设备挂载情况</p>
+<pre><code>lsblk 命令
+</code></pre><p><strong>如何增加一块硬盘</strong></p>
+<pre><code>1)虚拟机增加硬盘
+2)分区
+    fdisk /dev/sdb
+3)格式化
+    mkfs -t ext4 /dev/sdb1
+4)挂载
+
+    挂载:mount /dev/sdb1  /home/mydisk
+    卸载:umount /dev/sdb1 或者 umount /home/mydisk
+
+5)设置可以自动挂载
+
+    永久挂载需要修改/etc/fstab文件
+</code></pre><p><strong>磁盘情况查询</strong></p>
+<pre><code>查询系统整体磁盘使用情况
+基本语法:df -h
+
+查询指定目录的磁盘使用情况
+基本语法:du -h /目录
+</code></pre><h2 id="11、网络配置"><a href="#11、网络配置" class="headerlink" title="11、网络配置"></a>11、网络配置</h2><h2 id="12、进程管理"><a href="#12、进程管理" class="headerlink" title="12、进程管理"></a>12、进程管理</h2><pre><code>在linux中每个执行中程序(代码)都称作一个进程.每一个进程都分配了一个进程id
+
+一般系统的服务都会以后台进程的方式存在,而且都会常驻在系统中.
+</code></pre><p><strong>显示系统执行的进程ps</strong></p>
+<pre><code>ps -a:显示当前终端的所有进程信息
+ps -u:以用户的格式显示进程信息
+ps -x:显示后台进程的参数
+
+常用命令:ps -aux|grep xx
+        ps -ef|grep xx
+</code></pre><p>终止进程命令kill</p>
+<pre><code>kill [选项] 进程id
+killall 进程名称
+kill -9 进程id (强制杀死进程)
+</code></pre><p>查看进程树pstree</p>
+<pre><code>pstree -p:显示进程的pid
+pstree -u:显示进程的所属用户
+</code></pre><p><strong>服务管理</strong></p>
+<pre><code>服务(service)本质上就是进程,但是运行在后台,通常会监听某个端口,等待其它程序的请求(比如:sshd、mysql等)因此我们又称之为守护进程,是linux种比较重要的知识点.
+
+service管理指令:
+service 服务名[start|stop|restart|reload|status]
+</code></pre><p><strong>服务的运行级别</strong></p>
+<pre><code>查看或修改默认级别:/etc/inittab
+linux系统有七种运行级别
+0:系统停机状态
+1:单用户状态(root权限用于系统维护,禁止远程登入)
+2:多用户状态,不支持网络
+3:多用户状态,支持网络,登入后进入终端模式(常用模式)
+4:系统未使用,保留
+5:登入后进入图形界面模式(常用模式)
+6:系统正常关闭并重启()
+tip:常用的运行级别为3和5
+root用户密码忘记可以使用单用户状态找回密码
+</code></pre><p><strong>动态监控进程top</strong></p>
+<pre><code>top和ps命令很相似,它们都是用来显示正在执行的进程.不同之处是在执行一段时间top会显示更新后的结果.
+
+top [选项]
+top -p:指定每隔多少秒更新
+top -i:不显示任何闲置或僵死的进程
+top -p:通过指定监控进程id来监控某个进程的状态
+</code></pre><p>查看系统网络情况netstat</p>
+<p>netstat [选项]<br>    netstat -an:按一定顺序排列输出<br>    netstat -p:显示哪个进程在调用</p>
+<p>检测主机连接命令ping<br>    ping ip</p>
+<h2 id="13、RPM、YUM-包管理"><a href="#13、RPM、YUM-包管理" class="headerlink" title="13、RPM、YUM 包管理"></a>13、RPM、YUM 包管理</h2><h2 id="14、常用开发软件安装-Java环境、MySQL等"><a href="#14、常用开发软件安装-Java环境、MySQL等" class="headerlink" title="14、常用开发软件安装(Java环境、MySQL等)"></a>14、常用开发软件安装(Java环境、MySQL等)</h2><h2 id="15、linux-shell基本编程"><a href="#15、linux-shell基本编程" class="headerlink" title="15、linux shell基本编程"></a>15、linux shell基本编程</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/Linux学习笔记/" data-id="cjjc3k6ew0002ocl2liu0nurm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/07/Docker学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Docker 学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/07/Linux学习笔记/">Linux 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/Docker学习笔记/">Docker 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/Git学习笔记/">Git学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

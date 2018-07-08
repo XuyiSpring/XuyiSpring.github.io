@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Docker 学习笔记 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Docker 学习笔记 Docker项目的目标是实现轻量级的操作系统虚拟化解决方案. docker的基础是linux容器(LXC)等技术,在LXC的基础上Docker进行了进一步的封装,让用户不需要关心容器的管理,使得操作更为简便. 为什么要使用Docker 1、更快速的交付和部署 2、高效的虚拟化 3、轻松的歉意和扩展 4、简单的管理 容器与虚拟机对比 | 特性           |">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/07/07/Docker学习笔记/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Docker 学习笔记 Docker项目的目标是实现轻量级的操作系统虚拟化解决方案. docker的基础是linux容器(LXC)等技术,在LXC的基础上Docker进行了进一步的封装,让用户不需要关心容器的管理,使得操作更为简便. 为什么要使用Docker 1、更快速的交付和部署 2、高效的虚拟化 3、轻松的歉意和扩展 4、简单的管理 容器与虚拟机对比 | 特性           |">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-07T13:48:55.638Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 学习笔记">
+<meta name="twitter:description" content="Docker 学习笔记 Docker项目的目标是实现轻量级的操作系统虚拟化解决方案. docker的基础是linux容器(LXC)等技术,在LXC的基础上Docker进行了进一步的封装,让用户不需要关心容器的管理,使得操作更为简便. 为什么要使用Docker 1、更快速的交付和部署 2、高效的虚拟化 3、轻松的歉意和扩展 4、简单的管理 容器与虚拟机对比 | 特性           |">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Docker学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/Docker学习笔记/" class="article-date">
+  <time datetime="2018-07-07T13:47:35.450Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker 学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Docker-学习笔记"><a href="#Docker-学习笔记" class="headerlink" title="Docker 学习笔记"></a>Docker 学习笔记</h1><hr>
+<pre><code>Docker项目的目标是实现轻量级的操作系统虚拟化解决方案.
+docker的基础是linux容器(LXC)等技术,在LXC的基础上Docker进行了进一步的封装,让用户不需要关心容器的管理,使得操作更为简便.
+</code></pre><p><strong>为什么要使用Docker</strong></p>
+<pre><code>1、更快速的交付和部署
+2、高效的虚拟化
+3、轻松的歉意和扩展
+4、简单的管理
+</code></pre><p><strong>容器与虚拟机对比</strong></p>
+<pre><code>| 特性           |      容器              |  虚拟机 
+|----------        |:-------------:        |------:
+|特性            |容器                     |虚拟机
+|启动            |秒级别                     |分钟级别
+|硬盘使用        |较小                     |较大
+|性能             |接近原生                 |弱于原生
+|系统支持量        |单机支持上千个容器        |一般几十个
+</code></pre><hr>
+<h2 id="Docker三大组件"><a href="#Docker三大组件" class="headerlink" title="Docker三大组件"></a>Docker三大组件</h2><p><strong>镜像(image)</strong></p>
+<p>镜像:image就是一个只读模板,就是一个静态文件</p>
+<p><strong>镜像相关命令</strong></p>
+<pre><code>获取镜像
+    docker pull
+
+列出本地镜像
+    docker images
+
+删除本地镜像(删除镜像之前需要先删除,该镜像所有的容器)
+    docker rmi image
+</code></pre><p><strong>创建镜像</strong></p>
+<pre><code>1、修改已有镜像
+    先使用下载的镜像启动容器 docker run -t -i imageName /bin/bash
+    当修改完之后,exit.然后docker commit -m &quot;updateMessage&quot; -a &quot;用户信息&quot; 容器id 仓库名和tag信息
+
+
+2、使用Dockerfile来创建镜像
+</code></pre><p><strong>导入和导出镜像</strong></p>
+<pre><code>docker save imageId &gt; image.tar
+
+docker load &lt; image.tar
+</code></pre><p><strong>容器(Container)</strong></p>
+<pre><code>容器:容器是镜像运行的实例,它可以被启动、开始、停止、删除.每个容器都是相互隔离的,保证安全的平台.
+</code></pre><p><strong>启动容器有两种方式</strong></p>
+<pre><code>1、基于镜像新建一个容器并启动
+2、将在终止状态的容器重新启动
+备注:由于docker容器比较轻量级,通常我们会删除和新创建容器
+</code></pre><p><strong>新建并启动容器</strong></p>
+<pre><code>docker run image
+docker run -it ubuntu:14.04 /bin/bash (进入交互模式)
+docker run -d ubuntu:14.04(进入守线程模式)
+</code></pre><p><strong>利用docker run来创建容器时,docker在后台运行的标准操作包括</strong></p>
+<pre><code>检查本地是否存在指定的镜像,不存在就从公有仓库下载
+利用镜像创建并启动一个容器
+分配一个文件系统,并在只读的镜像层外面挂载一层可读写层
+从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中
+从地址池配置一个ip地址给容器
+执行用户指定的应用程序
+执行完毕后容器被终止
+</code></pre><p><strong>导入和导出容器</strong></p>
+<pre><code>docker export 容器id &gt; newName.tar
+cat name.tar | docker import - test
+
+
+删除容器
+docker rm containerName
+</code></pre><p><strong>仓库(Repository)</strong></p>
+<pre><code>仓库:仓库是存放镜像文件的地方,类似maven中的仓库概念.docker公司有提供一个docker hub仓库类似github
+
+
+一个容易混淆的概念是注册服务器,实际上注册服务器是管理仓库的具体服务器,每个服务器上可以有多个仓库,而每个仓库下面有多个镜像.
+从这方面来说,仓库可以被认为是一个具体的项目或目录.
+
+对于仓库地址dockerhub.com/centos来说,dockerhub.com是注册服务器地址,    centos是仓库名
+</code></pre><p><strong>DockerHub</strong></p>
+<pre><code>目前docker官方维护的一个公共仓库dockerhub,大部分需求都可以直接从dockerhub上直接下载镜像实现.
+
+登入操作
+    docker login
+
+检索镜像
+    docker search
+</code></pre><p><strong>私有仓库</strong></p>
+<pre><code>有时候使用dockerhub公有仓库可能不方便,那么可以搭建自己的本地仓库.
+
+安装运行docker-registry
+</code></pre><hr>
+<p><strong>docker 网络功能</strong></p>
+<pre><code>映射端口
+docker run -d -p 9000:8080 tomcat(9000为本地端口,8080为容器端口)
+
+查看映射端口配置
+docker port
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/Docker学习笔记/" data-id="cjjc3k6eg0000ocl22xbqqvoe" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/07/Linux学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux 学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/07/Git学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/07/Linux学习笔记/">Linux 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/Docker学习笔记/">Docker 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/Git学习笔记/">Git学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

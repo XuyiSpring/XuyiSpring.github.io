@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Linux学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/Linux学习笔记/" class="article-date">
+  <time datetime="2018-07-07T13:47:35.482Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/07/Linux学习笔记/">Linux 学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux-学习笔记"><a href="#Linux-学习笔记" class="headerlink" title="Linux 学习笔记"></a>Linux 学习笔记</h1><h2 id="1、linux简介"><a href="#1、linux简介" class="headerlink" title="1、linux简介"></a>1、linux简介</h2><pre><code>Linux主要发行版:
+</code></pre><h2 id="2、虚拟机简介和虚拟机上安装Centos"><a href="#2、虚拟机简介和虚拟机上安装Centos" class="headerlink" title="2、虚拟机简介和虚拟机上安装Centos"></a>2、虚拟机简介和虚拟机上安装Centos</h2><pre><code>虚拟机推荐:VMware Workstation、Virtualbox
+linux发行版有很多:推荐使用Centos学习
+
+VMware上有一个vmtools工具,安装了此工具可以让本机与虚拟机上的操作系统完成共享剪切板(复制粘贴)和共享文件的功能
+</code></pre><p><strong>XShell和Xftp安装：</strong></p>
+<pre><code>XShell是一款强大的安全终端,支持多种协议,可以通过网络连接到远程服务器进行操作
+Xftp是一个基于windows平台的功能强大的SFTP、FTP文件传输软件.使用了Xftp以后,windows用户能安全地在UNIX/Linux和windows之间传输文件
+</code></pre><h3 id="3、linux文件系统目录结构"><a href="#3、linux文件系统目录结构" class="headerlink" title="3、linux文件系统目录结构"></a>3、linux文件系统目录结构</h3><pre><code>linux的文件系统是采用层级式的树状目录结构,在此结构中最上层的是根目录&quot;/&quot;,然后在此目录下创建其他目录。
+</code></pre><p><strong>在linux世界里,一切皆文件</strong></p>
+<pre><code>![linux文件目录](https://i.imgur.com/7k8buyZ.jpg)
+</code></pre><p><strong>重点几个目录</strong></p>
+<pre><code>/bin(/usr/bin、、usr/local/bin) 这个目录存放经常使用命令
+/home             存放普通用户的主目录
+/root             root用户的主目录
+/etc            所有系统管理所需要的配置文件和子目录
+/usr     
+/boot             存放着linux启动时的一些核心文件
+/media             linux系统会自动识别一些设备,例如U盘、光驱当识别后linux会把识别的设备挂载到这个目录
+/mnt            系统提供该目录是为了让用户零食挂载别的文件系统的,我们可以将外部的存储设备挂载在/mnt/上
+/opt             这是给主机额外安装软件所放置的目录
+/var             这个目录中存放着不断扩充着内容,系统将经常修改的文件放在这个目录,包括各种日志文件
+</code></pre><h2 id="5、VI和VIM使用"><a href="#5、VI和VIM使用" class="headerlink" title="5、VI和VIM使用"></a>5、VI和VIM使用</h2><p><strong>vi和vim常用三种模式</strong></p>
+<pre><code>正常模式:以vi打开一个文件直接进入到正常模式
+插入模式:在正常模式下按下i字母之后会进入到编辑模式
+命令行模式:在这个模式下,可以提供你相关指令,完成读取、存盘、替换、离开vim、显示行号等操作.
+</code></pre><h2 id="6、linux用户管理"><a href="#6、linux用户管理" class="headerlink" title="6、linux用户管理"></a>6、linux用户管理</h2><p>创建用户与制定密码</p>
+<pre><code>useradd name
+1)当创建用户成功后,会自动创建和用户同名的home目录
+2)可以通过useradd -d 目录名 用户名,来创建用户指定home目录
+</code></pre><p>指定/修改密码</p>
+<pre><code>passwd 用户名
+tip:受权限控制
+</code></pre><p>删除用户</p>
+<pre><code>userdel 用户名
+</code></pre><p>查询用户信息</p>
+<pre><code>id 用户名
+</code></pre><p>切换用户</p>
+<pre><code>在操作linux中,如果当前用户权限不够时,可以通过su -指令切换到高权限用户.
+su - 切换用户名
+tip：
+1、从权限高的用户切换到权限低的用户不需要输入密码,反之需要.
+2、当需要返回到原来用户时,使用exit指令
+</code></pre><p>查看当前登入用户</p>
+<pre><code>who am i
+</code></pre><p><strong>用户组:类似角色,系统可以对有多个共性的多个用户进行统一管理</strong></p>
+<p>新增用户组</p>
+<pre><code>groupadd 组名
+</code></pre><p>删除用户组</p>
+<pre><code>groupdel 组名
+</code></pre><p>新增用户时直接指定组名</p>
+<pre><code>useradd -g 组名 用户名
+</code></pre><p>修改用户的组</p>
+<pre><code>usermod -g 组名 用户名
+</code></pre><p>用户和组的相关文件</p>
+<pre><code>/etc/passwd 文件
+/etc/shadow 文件
+/etc/group  文件
+</code></pre><h2 id="7、linux常用命令"><a href="#7、linux常用命令" class="headerlink" title="7、linux常用命令"></a>7、linux常用命令</h2><p>linux关机&amp;重启命令</p>
+<pre><code>shutdown -h now (立即关机)
+shutdown -h 2      (两分钟后关机)
+shutdown -r now    (现在重启计算机)
+halt            (关机)
+reboot             (现在重启计算机)
+sync             (把内存的数据同步到磁盘)
+tip:通常关机或重启时都应该执行该命令
+</code></pre><p>用户登入与注销:</p>
+<pre><code>登入时尽量少用root账号登入,通常开发没有root权限,可以使用普通用户登入,如果需要更高权限可以使用su -用户名来切换用户身份
+用户注销可以直接使用logout命令(图形界面运行无效,只有在运行级别为3时有效)
+</code></pre><p>linux运行级别和找回root密码</p>
+<p>linux中包含七个运行级别:</p>
+<pre><code>0:关机
+1：单用户[无需输入密码可登入系统,必须是在物理机上操作不能远程操作]
+2：多用户状态没有网络服务
+3：多用户状态有网络服务
+4：系统未使用保留
+5：图形界面
+6：系统重启
+常用运行级别是3和5,,如果要修改默认的运行级别
+/etc/inittab 编辑
+命令:init 级别
+</code></pre><p>linux帮助命令</p>
+<pre><code>man 指令获取帮组信息
+    基本用法:man [命令或配置文件]
+
+help指令
+help 命令
+tip:如果看不懂Google更直接
+</code></pre><p>pwd命令</p>
+<pre><code>功能:显示当前工作目录的绝对路径
+</code></pre><p>ls命令</p>
+<pre><code>功能:显示当前目录或文件下的信息
+    ls -a：显示当前目录所有的文件和目录,包括隐藏文件
+    ls -l：以列表的方式显示信息
+</code></pre><p>cd命令</p>
+<pre><code>功能:切换目录
+    cd ~：回到用户所在home目录
+    cd ..:返回当前目录的上一级目录
+</code></pre><p>mkdir命令</p>
+<pre><code>功能:创建目录
+    mkdir -p：创建多级目录
+</code></pre><p>rmdir命令</p>
+<pre><code>功能:删除目录(必须是空目录)
+    tip：如果目录下有文件无法删除,如果要删除包含文件的目录,可以使用rm -rf 指令
+</code></pre><p>touch命令</p>
+<pre><code>功能:创建空文件(类似window下新建文件)
+    touch filename
+</code></pre><p>cp命令</p>
+<pre><code>功能:拷贝文件到指定目录
+    cp [选项] source dest
+    cp -r:递归复制整个目录
+
+    cp /home/a.txt /a.txt
+    cp -r /home/mydir /mydir
+</code></pre><p>rm命令</p>
+<pre><code>功能:删除文件或目录
+    rm [选项] 删除的文件或目录
+
+    rm -r：递归删除整个目录
+    rm -f：强制删除不提示
+</code></pre><p>mv命令</p>
+<pre><code>功能:移动文件或目录(重命名功能)
+    mv oldfile newfile
+</code></pre><p>cat命令</p>
+<pre><code>功能:查看文件内容
+    cat -n:显示行号
+</code></pre><p>more命令</p>
+<pre><code>功能:以全屏的方式按页显示文本文件的内容
+</code></pre><p>less命令</p>
+<pre><code>功能:分屏查看文件内容
+tip:功能与more类似,但是并不是一次把所有文件都加载出来,对于大文件具有较高的效率
+</code></pre><p>echo命令</p>
+<pre><code>功能:输出内容到控制台
+</code></pre><p>head命令</p>
+<pre><code>功能:显示文件的开头部分,默认显示前10行内容
+    head -n:指定显示文件开头行数
+    head -n 20 myfile
+</code></pre><p>tail命令</p>
+<pre><code>功能:显示文件的尾部,默认显示文件最后10行内容
+    tail -n:指定显示文件尾部行数
+    tail -f:实时追踪文件的更新
+    实用命令:tail -f -n 10 myfile
+</code></pre><p>ln命令</p>
+<pre><code>功能:给文件创建一个软链(软链接类似window的快捷方式)
+    ln -s 源文件 软链名称
+</code></pre><p>history命令</p>
+<pre><code>功能:查看已经执行过的命令
+    history
+</code></pre><p>date命令</p>
+<pre><code>功能:查看日期
+    date
+    date +%Y
+    date &quot;+%Y-%m-%d %H:%M:%S&quot;
+</code></pre><p>cal命令</p>
+<pre><code>功能:查看日历
+</code></pre><p>find命令</p>
+<pre><code>功能:查询指定目录下的文件或目录
+    find -name:查找指定的文件名查找文件
+    find -user:查询输入指定用户名的文件
+    find -size:查找指定的文件大小的文件
+</code></pre><p>locate命令</p>
+<pre><code>功能:快速定位文件路径
+    updatedb
+    locate hello.txt
+    tip:locate查询指令速度很快,其会建立db来存储文件路径.
+</code></pre><p><strong>grep命令</strong></p>
+<pre><code>功能:过滤查找,针对的文件里面的内容,通常可以结合管道符来操作
+    grep -n:显示匹配行和行号
+    grep -i:忽略大小写
+</code></pre><p>重定向(&gt;)与追加(&gt;&gt;)</p>
+<p><strong>管道符 |  </strong></p>
+<pre><code>功能:将前一个命令处理的结果传输给后面的命令处理
+    grep &quot;java&quot;|&gt;test.txt
+</code></pre><p><strong>压缩和解压指令</strong></p>
+<pre><code>gzip&amp;gunzip
+    gzip myfile(压缩文件为myfile.gz,源文件将不存在)
+    gunzip myfile.gz(解压缩文件myfile.gz为myfile)
+
+zip&amp;unzip
+    zip [选项] xxx.zip 需要压缩的文件 (压缩文件和目录的命令)
+    -r：递归压缩
+
+    unzip [选项] xxx.zip (解压缩文件)
+    -d：指定解压后文件存放的目录
+
+tar指令
+功能:tar指令是打包指令,最后打包后的文件是.tar.gz的文件
+tar [选项] xxx.tar.gz
+-c:产生.tar打包文件
+-v:显示详细信息
+-f:指定压缩后的文件名
+-z:打包同时压缩
+-x:解包.tar文件
+
+实用命令:
+tar –xvf 解压
+tar -cvfz 压缩并打包
+</code></pre><h2 id="8、权限管理"><a href="#8、权限管理" class="headerlink" title="8、权限管理"></a>8、权限管理</h2><p><strong>在linux中每个用户都必须属于一个组,不能独立于组外.在linux中每个文件有所有者、所在组、其它组的概念.</strong></p>
+<p>修改文件所有者</p>
+<pre><code>chown 用户名 文件名
+修改文件所在组
+chgrp 组名 文件名
+</code></pre><p><strong>权限的基本介绍</strong></p>
+<pre><code>todo image link ll 命令
+
+1:第一位表示文件类型(d,-,c,b)
+2:2-4三位表示文件所有者拥有该文件的权限
+3:4-7三位表示文件所属组拥有该文件的权限
+4:5-10三位表示其它用户拥有该文件的权限
+
+rwx权限介绍
+r:表示读取查看(read) 数值4
+w:表示写修改(write)    数值2
+x:表示执行(execute)    数值1
+
+TODO 截图在图片中编辑
+</code></pre><p>修改权限 chmod</p>
+<pre><code>第一种方式:+、-、=变更权限(u:所有者、g:所属组、o:其他人、a:所有人(ugo))
+chmod u=rwx,g=rx,o=x
+chmod u+w
+chmod a-x
+
+第二种方式:通过数字来变更权限
+r=4,w=2,x=1
+chmod u=rwx,g=rx,o=x 等价 chmod 751
+</code></pre><p>修改文件所有者</p>
+<pre><code>chmod username file
+</code></pre><p>修改文件所属组</p>
+<pre><code>chmod group file
+</code></pre><h2 id="9、任务调度介绍与使用"><a href="#9、任务调度介绍与使用" class="headerlink" title="9、任务调度介绍与使用"></a>9、任务调度介绍与使用</h2><p>crontab介绍</p>
+<pre><code>任务调度:是指系统在某个时间执行的特定的没给你了那个或程序
+任务调度文件在/etc/crontab中
+</code></pre><p>基本语法</p>
+<pre><code>crontab [选项]
+-e:编辑crontab定时任务
+-l:查询crontab任务
+-r:删除当前用户所有crontab任务
+</code></pre><p><strong>Cron表达式</strong></p>
+<pre><code>Cron有不同语法格式:linux默认的语法格式为
+Minutes(1~59) Hours(1~23) DayofMonth(1~31) Month(1~12) DayofWeek(0~6)
+
+参数说明
+*         表示任何时间                &quot;* * * * *  命令&quot; 每分钟执行一次
+,        代表不连续的时间               &quot;0 1,6,21 * * * 命令&quot; 每天一点,六点,晚上九点执行
+-        代表连续的时间范围           &quot;5 3 * * 1-5 命令&quot; 表示周一到周五凌晨3点零5执行
+*/n     表示每隔多久执行一次         &quot;*/3 * * * * 命令&quot; 表示每隔三分钟执行一次
+
+crontab 相关指令:
+crontab -r:终止任务调度
+crontab -l:列出当前有哪些任务调度
+service crond restart 重启任务调度
+</code></pre><h2 id="10、linux磁盘分区介绍与实操"><a href="#10、linux磁盘分区介绍与实操" class="headerlink" title="10、linux磁盘分区介绍与实操"></a>10、linux磁盘分区介绍与实操</h2><p>分区方式</p>
+<pre><code>一、mbr分区(早期)
+1、最多支持四个主分区
+2、系统只能安装在主分区
+3、扩展分区要占一个主分区
+4、MBR最大只支持2TB
+
+二、gtp分区(主流)
+1、支持无线多个主分区
+2、最大支持18EP容量(1EP=1024PB,1PB=1024TB,1TB=1024GB)
+</code></pre><p><strong>linux分区</strong></p>
+<pre><code>1、对linux来说无论有几个分区,它归根结底只有一个根目录,一个独立且唯一的文件结构,linux中每个分区都是用来组成整个文件系统的一部分
+
+2、linux是采用一种叫载入的处理方式,将一个分区和一个目录关联起来.挂载与卸载分区
+
+linux硬盘分为IDE硬盘和SCSI硬盘,目前主流是SCSI硬盘
+
+硬盘标识符为sdx~
+sda1:第一个硬盘的第一个分区
+sdb2:第二个硬盘的第二个分区
+</code></pre><p>查看设备挂载情况</p>
+<pre><code>lsblk 命令
+</code></pre><p><strong>如何增加一块硬盘</strong></p>
+<pre><code>1)虚拟机增加硬盘
+2)分区
+    fdisk /dev/sdb
+3)格式化
+    mkfs -t ext4 /dev/sdb1
+4)挂载
+
+    挂载:mount /dev/sdb1  /home/mydisk
+    卸载:umount /dev/sdb1 或者 umount /home/mydisk
+
+5)设置可以自动挂载
+
+    永久挂载需要修改/etc/fstab文件
+</code></pre><p><strong>磁盘情况查询</strong></p>
+<pre><code>查询系统整体磁盘使用情况
+基本语法:df -h
+
+查询指定目录的磁盘使用情况
+基本语法:du -h /目录
+</code></pre><h2 id="11、网络配置"><a href="#11、网络配置" class="headerlink" title="11、网络配置"></a>11、网络配置</h2><h2 id="12、进程管理"><a href="#12、进程管理" class="headerlink" title="12、进程管理"></a>12、进程管理</h2><pre><code>在linux中每个执行中程序(代码)都称作一个进程.每一个进程都分配了一个进程id
+
+一般系统的服务都会以后台进程的方式存在,而且都会常驻在系统中.
+</code></pre><p><strong>显示系统执行的进程ps</strong></p>
+<pre><code>ps -a:显示当前终端的所有进程信息
+ps -u:以用户的格式显示进程信息
+ps -x:显示后台进程的参数
+
+常用命令:ps -aux|grep xx
+        ps -ef|grep xx
+</code></pre><p>终止进程命令kill</p>
+<pre><code>kill [选项] 进程id
+killall 进程名称
+kill -9 进程id (强制杀死进程)
+</code></pre><p>查看进程树pstree</p>
+<pre><code>pstree -p:显示进程的pid
+pstree -u:显示进程的所属用户
+</code></pre><p><strong>服务管理</strong></p>
+<pre><code>服务(service)本质上就是进程,但是运行在后台,通常会监听某个端口,等待其它程序的请求(比如:sshd、mysql等)因此我们又称之为守护进程,是linux种比较重要的知识点.
+
+service管理指令:
+service 服务名[start|stop|restart|reload|status]
+</code></pre><p><strong>服务的运行级别</strong></p>
+<pre><code>查看或修改默认级别:/etc/inittab
+linux系统有七种运行级别
+0:系统停机状态
+1:单用户状态(root权限用于系统维护,禁止远程登入)
+2:多用户状态,不支持网络
+3:多用户状态,支持网络,登入后进入终端模式(常用模式)
+4:系统未使用,保留
+5:登入后进入图形界面模式(常用模式)
+6:系统正常关闭并重启()
+tip:常用的运行级别为3和5
+root用户密码忘记可以使用单用户状态找回密码
+</code></pre><p><strong>动态监控进程top</strong></p>
+<pre><code>top和ps命令很相似,它们都是用来显示正在执行的进程.不同之处是在执行一段时间top会显示更新后的结果.
+
+top [选项]
+top -p:指定每隔多少秒更新
+top -i:不显示任何闲置或僵死的进程
+top -p:通过指定监控进程id来监控某个进程的状态
+</code></pre><p>查看系统网络情况netstat</p>
+<p>netstat [选项]<br>    netstat -an:按一定顺序排列输出<br>    netstat -p:显示哪个进程在调用</p>
+<p>检测主机连接命令ping<br>    ping ip</p>
+<h2 id="13、RPM、YUM-包管理"><a href="#13、RPM、YUM-包管理" class="headerlink" title="13、RPM、YUM 包管理"></a>13、RPM、YUM 包管理</h2><h2 id="14、常用开发软件安装-Java环境、MySQL等"><a href="#14、常用开发软件安装-Java环境、MySQL等" class="headerlink" title="14、常用开发软件安装(Java环境、MySQL等)"></a>14、常用开发软件安装(Java环境、MySQL等)</h2><h2 id="15、linux-shell基本编程"><a href="#15、linux-shell基本编程" class="headerlink" title="15、linux shell基本编程"></a>15、linux shell基本编程</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/Linux学习笔记/" data-id="cjjc3k6ew0002ocl2liu0nurm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Docker学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/Docker学习笔记/" class="article-date">
+  <time datetime="2018-07-07T13:47:35.450Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/07/Docker学习笔记/">Docker 学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Docker-学习笔记"><a href="#Docker-学习笔记" class="headerlink" title="Docker 学习笔记"></a>Docker 学习笔记</h1><hr>
+<pre><code>Docker项目的目标是实现轻量级的操作系统虚拟化解决方案.
+docker的基础是linux容器(LXC)等技术,在LXC的基础上Docker进行了进一步的封装,让用户不需要关心容器的管理,使得操作更为简便.
+</code></pre><p><strong>为什么要使用Docker</strong></p>
+<pre><code>1、更快速的交付和部署
+2、高效的虚拟化
+3、轻松的歉意和扩展
+4、简单的管理
+</code></pre><p><strong>容器与虚拟机对比</strong></p>
+<pre><code>| 特性           |      容器              |  虚拟机 
+|----------        |:-------------:        |------:
+|特性            |容器                     |虚拟机
+|启动            |秒级别                     |分钟级别
+|硬盘使用        |较小                     |较大
+|性能             |接近原生                 |弱于原生
+|系统支持量        |单机支持上千个容器        |一般几十个
+</code></pre><hr>
+<h2 id="Docker三大组件"><a href="#Docker三大组件" class="headerlink" title="Docker三大组件"></a>Docker三大组件</h2><p><strong>镜像(image)</strong></p>
+<p>镜像:image就是一个只读模板,就是一个静态文件</p>
+<p><strong>镜像相关命令</strong></p>
+<pre><code>获取镜像
+    docker pull
+
+列出本地镜像
+    docker images
+
+删除本地镜像(删除镜像之前需要先删除,该镜像所有的容器)
+    docker rmi image
+</code></pre><p><strong>创建镜像</strong></p>
+<pre><code>1、修改已有镜像
+    先使用下载的镜像启动容器 docker run -t -i imageName /bin/bash
+    当修改完之后,exit.然后docker commit -m &quot;updateMessage&quot; -a &quot;用户信息&quot; 容器id 仓库名和tag信息
+
+
+2、使用Dockerfile来创建镜像
+</code></pre><p><strong>导入和导出镜像</strong></p>
+<pre><code>docker save imageId &gt; image.tar
+
+docker load &lt; image.tar
+</code></pre><p><strong>容器(Container)</strong></p>
+<pre><code>容器:容器是镜像运行的实例,它可以被启动、开始、停止、删除.每个容器都是相互隔离的,保证安全的平台.
+</code></pre><p><strong>启动容器有两种方式</strong></p>
+<pre><code>1、基于镜像新建一个容器并启动
+2、将在终止状态的容器重新启动
+备注:由于docker容器比较轻量级,通常我们会删除和新创建容器
+</code></pre><p><strong>新建并启动容器</strong></p>
+<pre><code>docker run image
+docker run -it ubuntu:14.04 /bin/bash (进入交互模式)
+docker run -d ubuntu:14.04(进入守线程模式)
+</code></pre><p><strong>利用docker run来创建容器时,docker在后台运行的标准操作包括</strong></p>
+<pre><code>检查本地是否存在指定的镜像,不存在就从公有仓库下载
+利用镜像创建并启动一个容器
+分配一个文件系统,并在只读的镜像层外面挂载一层可读写层
+从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中
+从地址池配置一个ip地址给容器
+执行用户指定的应用程序
+执行完毕后容器被终止
+</code></pre><p><strong>导入和导出容器</strong></p>
+<pre><code>docker export 容器id &gt; newName.tar
+cat name.tar | docker import - test
+
+
+删除容器
+docker rm containerName
+</code></pre><p><strong>仓库(Repository)</strong></p>
+<pre><code>仓库:仓库是存放镜像文件的地方,类似maven中的仓库概念.docker公司有提供一个docker hub仓库类似github
+
+
+一个容易混淆的概念是注册服务器,实际上注册服务器是管理仓库的具体服务器,每个服务器上可以有多个仓库,而每个仓库下面有多个镜像.
+从这方面来说,仓库可以被认为是一个具体的项目或目录.
+
+对于仓库地址dockerhub.com/centos来说,dockerhub.com是注册服务器地址,    centos是仓库名
+</code></pre><p><strong>DockerHub</strong></p>
+<pre><code>目前docker官方维护的一个公共仓库dockerhub,大部分需求都可以直接从dockerhub上直接下载镜像实现.
+
+登入操作
+    docker login
+
+检索镜像
+    docker search
+</code></pre><p><strong>私有仓库</strong></p>
+<pre><code>有时候使用dockerhub公有仓库可能不方便,那么可以搭建自己的本地仓库.
+
+安装运行docker-registry
+</code></pre><hr>
+<p><strong>docker 网络功能</strong></p>
+<pre><code>映射端口
+docker run -d -p 9000:8080 tomcat(9000为本地端口,8080为容器端口)
+
+查看映射端口配置
+docker port
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/Docker学习笔记/" data-id="cjjc3k6eg0000ocl22xbqqvoe" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/Git学习笔记/" class="article-date">
+  <time datetime="2018-07-07T13:47:35.450Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/07/Git学习笔记/">Git学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git学习笔记"><a href="#Git学习笔记" class="headerlink" title="Git学习笔记"></a>Git学习笔记</h1><h2 id="1、git介绍与安装"><a href="#1、git介绍与安装" class="headerlink" title="1、git介绍与安装"></a>1、git介绍与安装</h2><pre><code>Git是目前先进的分布式版本控制系统
+</code></pre><p><strong>集中式与分布式版本控制系统(SVN vs Git)</strong></p>
+<pre><code>集中式版本系统:版本库是集中存放在中央服务器的,集中式版本控制系统最大的缺点就是必须联网才能工作
+分布式版本系统:分布式版本控制系统没有&quot;中央服务器&quot;的概念,每个人电脑上都是一个完整的版本库,但是为了多人协作开发通常会搭建一个服务器.
+</code></pre><hr>
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><pre><code>1、创建目录 mkdir myGitProject
+2、进入目录 执行git init命令
+备注执行完git init初始化命令之后,会在目录下看到一个.git文件(里面是存放文件变更记录)
+
+Repository(仓库/版本库):可以理解为被git管理的一个目录
+</code></pre><p><strong>创建SSH key</strong></p>
+<pre><code>创建github账号添加ssh key
+ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+私钥和秘钥的文件在用户目录下.ssh/ | ~./ssh
+</code></pre><p><strong>重点工作区与暂存区的概念</strong></p>
+<pre><code>工作区:普通文件或目录,没有被git跟踪管理的文件,没有被git add的文件
+暂存区:执行git add 命令之后的文件(git commit 会将暂存区的文件提交到当前分支)
+
+git 管理的是修改不是文件
+</code></pre><p><strong>撤销提交</strong></p>
+<pre><code>场景一:文件如果只是在工作区修改:git checkout -- file
+场景二:文件如果已经添加到暂存区:git reset HEAD file 先回到场景一
+</code></pre><p><strong>删除文件</strong></p>
+<pre><code>git rm file
+如果有一个文件被误加入暂存区,需要删除该文件的话,需要使用git rm命令来删除
+
+git checkout其实是用版本库里的版本替换工作区的版本,无论工作区是修改还是删除,都可以&quot;一键还原&quot;
+</code></pre><h2 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h2><p><strong>1、本地已有项目</strong></p>
+<pre><code>git remote add origin git仓库地址
+git push -u origin master
+</code></pre><p><strong>2、从远程仓库拉取项目</strong></p>
+<pre><code>git clone git仓库地址(git 支持git协议和https协议)
+</code></pre><h2 id="创建与管理分支"><a href="#创建与管理分支" class="headerlink" title="创建与管理分支"></a>创建与管理分支</h2><center><img src="https://i.imgur.com/jy9slKE.png" alt=""></center>
+
+
+<p><strong>分支管理的原理图</strong></p>
+<pre><code>合并分支时,加上--no-ff参数就可以用普通模式合并,合并后的历史有分支,能看出来曾经做过合并,而fast forward合并就看不出来曾经做过合并
+
+修复bug时,我们会通过创建新的bug分支进行修复,然后合并,最后删除
+
+
+当手头工作没有完成时,先把工作现场git stash一下,然后去修复bug,修复后,再git stash pop,回到工作现场
+</code></pre><p><strong>多人协作的工作模式通常是这样</strong></p>
+<pre><code>首先,可以试图用git push origin &lt;branch-name&gt;推送自己的修改；
+如果推送失败,则因为远程分支比你的本地更新,需要先用git pull试图合并；
+如果合并有冲突,则解决冲突,并在本地提交；
+没有冲突或者解决掉冲突后,再用git push origin &lt;branch-name&gt;推送就能成功！
+如果git pull提示no tracking information,则说明本地分支和远程分支的链接关系没有创建,用命令git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;
+
+
+rebase操作可以把本地未push的分叉提交历史整理成直线
+rebase的目的是使得我们在查看历史提交的变化时更容易,因为分叉的提交需要三方对比
+</code></pre><hr>
+<h2 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h2><pre><code>Tag就是一个让人容易记住的有意义的名字,它跟某个commit绑在一起
+</code></pre><hr>
+<h2 id="git自定义配置"><a href="#git自定义配置" class="headerlink" title="git自定义配置"></a>git自定义配置</h2><pre><code>git config --global user.name &quot;username&quot;
+git config --global user.email &quot;username@example.com&quot;
+</code></pre><p><strong>配置别名 </strong></p>
+<pre><code>git config --global alias.st status
+git config --global alias.br branch
+</code></pre><p><strong>忽略指定文件</strong></p>
+<pre><code>在git项目中添加.gitignore文件配置(可以参考https://github.com/github/gitignore)
+</code></pre><p><strong>忽略文件的原则是</strong></p>
+<pre><code>忽略操作系统自动生成的文件,比如缩略图等
+忽略编译生成的中间文件、可执行文件等,也就是如果一个文件是通过另一个文件自动生成的,那自动生成的文件就没必要放进版本库,比如Java编译产生的.class文件
+忽略你自己的带有敏感信息的配置文件,比如存放口令的配置文件
+</code></pre><hr>
+<h2 id="git-常用命令"><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h2><pre><code>查看配置信息
+git config --list
+
+配置用户名和密码
+git config --global user.name &quot;username&quot;
+git config --global user.email &quot;username@example.com&quot;
+
+配置别名
+git config --global alias.st status
+git config --global alias.br branch
+
+初始化git版本仓库
+git init
+
+新增文件到版本库暂存区
+git add [fiel file2|.]
+
+提交文件到版本库
+git commit -m &quot;commitDesc&quot;
+
+查看当前版本库的状态
+git status
+
+查看文件或版本仓库修改的具体内容
+git diff [file]
+
+查看git提交记录
+git log --pretty=oneline
+
+版本回退
+git reset --hard commitId
+
+查看历史命令
+git reflog
+
+查看分支
+git branch
+
+创建分支
+git branch branchName
+
+切换分支
+git checkout branchName
+
+创建并切换分支
+git checkout -b branchName
+
+合并分支到当前分支
+git merge branchName
+
+删除本地分支
+git branch -[d|D] branchName(D表示强制删除)
+
+查看分支合并图
+git log --graph
+
+
+保存工作区现场(有修改文件但并不想提交)
+git stash
+
+查看工作区现场列表
+git stash list
+
+返回工作区现场
+git stash apply或者git stash pop
+git stash apply stash@{0}
+
+查看远程仓库信息
+git remote
+
+推送本地分支到远程仓库(推荐仅推送共享分支到远程仓库)
+git push origin branchName
+
+拉取远程最新代码
+git pull
+
+拉取远程最新分支
+git fetch
+
+建立本地分支和远程分支的关联
+git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;
+
+创建标签
+git tag tagName [commitId] (默认是HEAD,可以指定commitId)
+git tag -a tagName -m &quot;tagDesc&quot;
+
+查看标签
+git tag
+
+删除本地标签
+git tag -d tagName
+
+删除远程标签
+git push origin :refs/tags/&lt;tagname&gt;
+
+推送本地标签到远程
+git push origin &lt;tagname&gt;
+git push origin --tags(推送所有的本地分支)
+
+分叉提交历史整理成直线
+git rebase
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/Git学习笔记/" data-id="cjjc3k6ew0001ocl2clv3eg8z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/hello-world/" class="article-date">
+  <time datetime="2018-07-07T13:42:12.583Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/07/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/hello-world/" data-id="cjjc3k6ew0003ocl2mqozy8t0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/07/Linux学习笔记/">Linux 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/Docker学习笔记/">Docker 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/Git学习笔记/">Git学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
