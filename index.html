@@ -62,6 +62,93 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JDBC学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/JDBC学习笔记/" class="article-date">
+  <time datetime="2018-07-14T02:01:30.360Z" itemprop="datePublished">2018-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java-SE/">Java SE</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/JDBC学习笔记/">JDBC 学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JDBC学习笔记"><a href="#JDBC学习笔记" class="headerlink" title="JDBC学习笔记"></a>JDBC学习笔记</h1><hr>
+<h2 id="JDBC基础概念"><a href="#JDBC基础概念" class="headerlink" title="JDBC基础概念"></a>JDBC基础概念</h2><pre><code>JDBC(Java Dataebase Connectivity),JDBC是java程序语言和各种关系型数据库(支持标准SQL)连接的标准.
+JDBC提供了一种基准,据此可以构建更高级的工具和接口,使数据库开发人员能够编写数据库应用程序.
+
+JDBC是典型的面向接口编程,所有的数据库厂商如果想要使用java来操作他们的数据库,那么这些产商就需要提供JDBC实现驱动Driver.
+</code></pre><p><strong>数据库驱动</strong></p>
+<pre><code>JDBC仅仅只是访问DB的接口标准定义,具体实现是需要各个数据库厂商实现了.比如mysql、oracle、sqlServer都提供了JDBC的实现驱动.
+</code></pre><p><strong>JDBC原理图</strong></p>
+<center><img src="https://i.imgur.com/FTiOhlh.png" alt="JDBC原理图"></center>
+
+
+<hr>
+<h2 id="JDBC常用接口"><a href="#JDBC常用接口" class="headerlink" title="JDBC常用接口"></a>JDBC常用接口</h2><p><strong>Driver接口</strong></p>
+<pre><code>由数据库产商提供
+加载MySQL驱动 Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+</code></pre><p><strong>Conncetion接口</strong></p>
+<pre><code>Connection表示与数据库的连接会话
+获取数据库连接Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://host:port/database&quot;, &quot;user&quot;, &quot;password&quot;);
+</code></pre><p><strong>Statement接口</strong></p>
+<pre><code>用于执行静态SQL语句的处理对象
+
+Statement:由createStatement创建,用于发送简单的SQL语句（不带参数）。
+PreparedStatement:继承自Statement接口,由preparedStatement创建,用于发送含有一个或多个参数的SQL语句.
+PreparedStatement对象比Statement对象的效率更高,并且可以防止SQL注入.所以我们一般都使用PreparedStatement.
+CallableStatement:继承自PreparedStatement接口,由方法prepareCall创建,用于调用存储过程.
+</code></pre><p><strong>ResultSet接口</strong></p>
+<pre><code>用于接收处理对象执行SQL后返回结果的结果集
+
+ResultSet可以抽象成table表,刚开始游标在第一行记录之上,游标可以移动来获取table记录
+</code></pre><hr>
+<h2 id="使用JDBC操作数据库的步骤"><a href="#使用JDBC操作数据库的步骤" class="headerlink" title="使用JDBC操作数据库的步骤"></a>使用JDBC操作数据库的步骤</h2><pre><code>1、加载数据库驱动(Class.forName(driverUrl))
+2、获取数据库连接(通过DriverManager获取连接对象)
+3、获得预处理机制执行语句(通过Connection获取Statement对象)
+4、获取结果集对象(通过Statement执行SQL)
+5、final 释放数据库资源
+</code></pre><p><strong>java.sql.Date与java.util.Date的关系.</strong></p>
+<pre><code>new java.sql.Date(new java.util.Date().getTime())
+</code></pre><hr>
+<pre><code>In general, to process any SQL statement with JDBC, you follow these steps:
+
+1、Establishing a connection
+2、Create a statement
+3、Execute the query
+4、Process the ResultSet object
+5、Close the connection
+</code></pre><hr>
+<h2 id="JDBC驱动加载原理"><a href="#JDBC驱动加载原理" class="headerlink" title="JDBC驱动加载原理"></a>JDBC驱动加载原理</h2><pre><code>https://blog.csdn.net/luanlouis/article/details/29850811
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/14/JDBC学习笔记/" data-id="cjjkrorbj0002q0l220vg4vr0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-使用vps科学上网" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/08/使用vps科学上网/" class="article-date">
@@ -131,7 +218,7 @@ linux地址:https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/08/使用vps科学上网/" data-id="cjjcrdfca0004gwl2otlvg1wk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/08/使用vps科学上网/" data-id="cjjkrorbl0003q0l2aucfp53i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -508,7 +595,7 @@ top -p:通过指定监控进程id来监控某个进程的状态
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/Linux学习笔记/" data-id="cjjcrdfc80003gwl21zccbh4y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/Linux学习笔记/" data-id="cjjkrorbn0004q0l2eivqqbzq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -635,7 +722,7 @@ docker port
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/Docker学习笔记/" data-id="cjjcrdfbb0000gwl2mkwhxnv1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/Docker学习笔记/" data-id="cjjkrorb80000q0l2kpwutblz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -839,7 +926,7 @@ git rebase
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/Git学习笔记/" data-id="cjjcrdfc40001gwl2u294ewcz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/Git学习笔记/" data-id="cjjkrorbs0006q0l2akaw2njq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -884,7 +971,7 @@ git rebase
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/hello-world/" data-id="cjjcrdfc60002gwl2l7rpzkzz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/hello-world/" data-id="cjjkrorbg0001q0l2wp91vyc6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -904,7 +991,7 @@ git rebase
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-SE/">Java SE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li></ul>
     </div>
   </div>
 
@@ -932,6 +1019,10 @@ git rebase
       <ul>
         
           <li>
+            <a href="/2018/07/14/JDBC学习笔记/">JDBC 学习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/08/使用vps科学上网/">使用vps科学上网</a>
           </li>
         
@@ -945,10 +1036,6 @@ git rebase
         
           <li>
             <a href="/2018/07/07/Git学习笔记/">Git学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/07/hello-world/">Hello World</a>
           </li>
         
       </ul>
