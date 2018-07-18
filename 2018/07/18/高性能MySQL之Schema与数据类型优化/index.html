@@ -7,17 +7,17 @@
   
   <title>高性能MySQL之:Schema与数据类型优化 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="高性能MySQL之:Schema与数据类型优化一、选择优化的数据结构类型简单的原则 1、更小的通常更好 2、简单就好 3、尽量避免null 整数类型 TINYINT、SMALLINT、MEDIUMINT、INT、BIGINT  整数类型有可选的unsigned属性,表示不允许负数 实数类型 FLOAT、DOUBLE、DECIMAL  备注:尽量只在对小数进行精确计算时才是用DECIMAL类型.可以">
+  <meta name="description" content="一、选择优化的数据结构类型简单的原则 1、更小的通常更好 2、简单就好 3、尽量避免null 整数类型 TINYINT、SMALLINT、MEDIUMINT、INT、BIGINT  整数类型有可选的unsigned属性,表示不允许负数 实数类型 FLOAT、DOUBLE、DECIMAL  备注:尽量只在对小数进行精确计算时才是用DECIMAL类型.可以使用BIGINT来代替DECIMAL,在应用层">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高性能MySQL之:Schema与数据类型优化">
 <meta property="og:url" content="http://yoursite.com/2018/07/18/高性能MySQL之Schema与数据类型优化/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="高性能MySQL之:Schema与数据类型优化一、选择优化的数据结构类型简单的原则 1、更小的通常更好 2、简单就好 3、尽量避免null 整数类型 TINYINT、SMALLINT、MEDIUMINT、INT、BIGINT  整数类型有可选的unsigned属性,表示不允许负数 实数类型 FLOAT、DOUBLE、DECIMAL  备注:尽量只在对小数进行精确计算时才是用DECIMAL类型.可以">
+<meta property="og:description" content="一、选择优化的数据结构类型简单的原则 1、更小的通常更好 2、简单就好 3、尽量避免null 整数类型 TINYINT、SMALLINT、MEDIUMINT、INT、BIGINT  整数类型有可选的unsigned属性,表示不允许负数 实数类型 FLOAT、DOUBLE、DECIMAL  备注:尽量只在对小数进行精确计算时才是用DECIMAL类型.可以使用BIGINT来代替DECIMAL,在应用层">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-18T14:40:27.118Z">
+<meta property="og:updated_time" content="2018-07-18T14:43:56.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL之:Schema与数据类型优化">
-<meta name="twitter:description" content="高性能MySQL之:Schema与数据类型优化一、选择优化的数据结构类型简单的原则 1、更小的通常更好 2、简单就好 3、尽量避免null 整数类型 TINYINT、SMALLINT、MEDIUMINT、INT、BIGINT  整数类型有可选的unsigned属性,表示不允许负数 实数类型 FLOAT、DOUBLE、DECIMAL  备注:尽量只在对小数进行精确计算时才是用DECIMAL类型.可以">
+<meta name="twitter:description" content="一、选择优化的数据结构类型简单的原则 1、更小的通常更好 2、简单就好 3、尽量避免null 整数类型 TINYINT、SMALLINT、MEDIUMINT、INT、BIGINT  整数类型有可选的unsigned属性,表示不允许负数 实数类型 FLOAT、DOUBLE、DECIMAL  备注:尽量只在对小数进行精确计算时才是用DECIMAL类型.可以使用BIGINT来代替DECIMAL,在应用层">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -70,6 +70,10 @@
   <time datetime="2018-07-18T14:39:56.584Z" itemprop="datePublished">2018-07-18</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/高性能MySQL/">高性能MySQL</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -86,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="高性能MySQL之-Schema与数据类型优化"><a href="#高性能MySQL之-Schema与数据类型优化" class="headerlink" title="高性能MySQL之:Schema与数据类型优化"></a>高性能MySQL之:Schema与数据类型优化</h1><h2 id="一、选择优化的数据结构类型"><a href="#一、选择优化的数据结构类型" class="headerlink" title="一、选择优化的数据结构类型"></a>一、选择优化的数据结构类型</h2><p><strong>简单的原则</strong></p>
+        <h2 id="一、选择优化的数据结构类型"><a href="#一、选择优化的数据结构类型" class="headerlink" title="一、选择优化的数据结构类型"></a>一、选择优化的数据结构类型</h2><p><strong>简单的原则</strong></p>
 <pre><code>1、更小的通常更好
 2、简单就好
 3、尽量避免null
@@ -158,7 +162,7 @@ DATETIME存储的范围是1001到9999年,TIMESTAMP存储的范围时间是1970�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/18/高性能MySQL之Schema与数据类型优化/" data-id="cjjr8ihe50006o0l2xiwvotyn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/18/高性能MySQL之Schema与数据类型优化/" data-id="cjjr8meyy0009z8l28dvb0pae" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +190,7 @@ DATETIME存储的范围是1001到9999年,TIMESTAMP存储的范围时间是1970�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-SE/">Java SE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-SE/">Java SE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/高性能MySQL/">高性能MySQL</a></li></ul>
     </div>
   </div>
 
