@@ -62,6 +62,110 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-高性能MySQL之Schema与数据类型优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/18/高性能MySQL之Schema与数据类型优化/" class="article-date">
+  <time datetime="2018-07-18T14:39:56.584Z" itemprop="datePublished">2018-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/18/高性能MySQL之Schema与数据类型优化/">高性能MySQL之:Schema与数据类型优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="高性能MySQL之-Schema与数据类型优化"><a href="#高性能MySQL之-Schema与数据类型优化" class="headerlink" title="高性能MySQL之:Schema与数据类型优化"></a>高性能MySQL之:Schema与数据类型优化</h1><h2 id="一、选择优化的数据结构类型"><a href="#一、选择优化的数据结构类型" class="headerlink" title="一、选择优化的数据结构类型"></a>一、选择优化的数据结构类型</h2><p><strong>简单的原则</strong></p>
+<pre><code>1、更小的通常更好
+2、简单就好
+3、尽量避免null
+</code></pre><p><strong>整数类型</strong></p>
+<pre><code>TINYINT、SMALLINT、MEDIUMINT、INT、BIGINT
+
+整数类型有可选的unsigned属性,表示不允许负数
+</code></pre><p><strong>实数类型</strong></p>
+<pre><code>FLOAT、DOUBLE、DECIMAL
+
+备注:尽量只在对小数进行精确计算时才是用DECIMAL类型.可以使用BIGINT来代替DECIMAL,在应用层换算单位(比如将元转换为分)
+</code></pre><p><strong>字符串类型</strong></p>
+<pre><code>CHAR &amp; VARCHAR
+
+char是定长存储,varchar是变长存储方式.
+char适合存储定长的字符串,例如MD5摘要串、UUID等.
+备注:varchar通常需要一个或两个额外字节存储字符串的长度
+备注:字符串长度定义的是字符数不是字节数.
+</code></pre><hr>
+<pre><code>BLOB &amp; TEXT类型
+
+BLOB和TEXT是为存储很大的数据而设计的字符串类型,分别采用二进制和字符存储方式存储.
+如果对BLOB或TEXT进行排序,最好使用order by substring(cloumn,length)
+备注:通常InnoDB存储较大的BLOB或TEXT时,会使用额外的存储区域来存储,在行内仅仅只存储指向这块区域的指针.
+</code></pre><p><strong>日期和时间类型</strong></p>
+<pre><code>DATETIME&amp;TIMESTAMP
+
+DATETIME存储的范围是1001到9999年,TIMESTAMP存储的范围时间是1970年到2038年
+更新记录时自动更新update_time
+</code></pre><p><strong>选择合适的标识符</strong></p>
+<pre><code>为标识列选择合适的数据类型非常重要,通常整数类型(自增)是最优选择
+对开发者隐藏复杂性的应用通常不能很好的扩展.
+</code></pre><h2 id="二、MySQL-schema设计中的陷阱"><a href="#二、MySQL-schema设计中的陷阱" class="headerlink" title="二、MySQL schema设计中的陷阱"></a>二、MySQL schema设计中的陷阱</h2><pre><code>太多的列
+太多的关联
+滥用枚举
+非此发明的NULL
+</code></pre><h2 id="三、范式与反范式"><a href="#三、范式与反范式" class="headerlink" title="三、范式与反范式"></a>三、范式与反范式</h2><h3 id="三大范式"><a href="#三大范式" class="headerlink" title="三大范式"></a>三大范式</h3><pre><code>范式化的数据库中,每个事实数据会出现并且只出现一次.而反范式的数据库中,信息是冗余的,可能会存储在多个地方.
+</code></pre><p><strong>范式的优点与缺点</strong></p>
+<pre><code>1、范式化的更新操作通常比反范式化要快
+2、当数据较好的范式化时,就会有很少或没有重复数据,所以只需要修改更少的数据
+3、范式化的表通常更小,可以更好的放在内存里,所以执行操作会更快
+
+范式化设计的schema的缺点是通常需要关联查询.
+</code></pre><p><strong>反范式的有点与缺点</strong></p>
+<pre><code>1、反范式化的schema由于所有数据都在一张表中,可以很好的避免关联.
+
+缺点就是范式化的优点将不复存在
+最常见的反范式化数据的方法是复制或者缓存,在不同的表中存储相同的特定列.
+</code></pre><p><strong>实际开发中不会极端的只是用其中的一种,通常是混合使用.</strong></p>
+<h2 id="四、缓存表和汇总表"><a href="#四、缓存表和汇总表" class="headerlink" title="四、缓存表和汇总表"></a>四、缓存表和汇总表</h2><pre><code>有些场景需要频繁查询汇总操作如果每次都是在元数据表中查询汇总,那么代价就较高.可以考虑单独独立一张汇总表来记录这些数据.
+
+1、用户评论次数
+2、商品销售量
+
+当然是用NoSQL数据库来解决上述场景也是不错的选择
+</code></pre><h2 id="五、加快ALTER-TABLE操作的速度"><a href="#五、加快ALTER-TABLE操作的速度" class="headerlink" title="五、加快ALTER TABLE操作的速度"></a>五、加快ALTER TABLE操作的速度</h2><pre><code>MySQL的alter table操作的性能对达标来说通常是个大问题,因为需要锁表来完成.
+</code></pre><p><strong>如何可靠的完成修改线上大表结构？</strong></p>
+<hr>
+<p><strong>总结</strong></p>
+<pre><code>1、避免过度设计
+2、使用小而简单合适数据类型,尽量避免使用null
+3、尽量使用相同的数据类型存储相似或相关的值,尤其是在关联条件中使用的列
+4、注意可变长字符串,其在临时表和排序中可能会导致悲观的按最大长度分配内存
+5、尽量使用整数定义标识列
+6、小心使用enum和set
+
+范式是好的,但是反范式有时也是必需的
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/18/高性能MySQL之Schema与数据类型优化/" data-id="cjjr8ihe50006o0l2xiwvotyn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JDBC学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/14/JDBC学习笔记/" class="article-date">
@@ -139,7 +243,7 @@ ResultSet可以抽象成table表,刚开始游标在第一行记录之上,游标�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/JDBC学习笔记/" data-id="cjjkrorbj0002q0l220vg4vr0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/JDBC学习笔记/" data-id="cjjr8ihdq0002o0l2awjoarbq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -218,7 +322,7 @@ linux地址:https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/08/使用vps科学上网/" data-id="cjjkrorbl0003q0l2aucfp53i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/08/使用vps科学上网/" data-id="cjjr8ihdq0001o0l2wzcnao44" class="article-share-link">Share</a>
       
       
     </footer>
@@ -595,7 +699,7 @@ top -p:通过指定监控进程id来监控某个进程的状态
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/Linux学习笔记/" data-id="cjjkrorbn0004q0l2eivqqbzq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/Linux学习笔记/" data-id="cjjr8ihe50004o0l26fk45ltz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -722,7 +826,7 @@ docker port
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/Docker学习笔记/" data-id="cjjkrorb80000q0l2kpwutblz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/Docker学习笔记/" data-id="cjjr8ihdq0000o0l29wlnm43o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -926,7 +1030,7 @@ git rebase
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/Git学习笔记/" data-id="cjjkrorbs0006q0l2akaw2njq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/Git学习笔记/" data-id="cjjr8ihdq0003o0l2ek0zu4d1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -971,7 +1075,7 @@ git rebase
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/hello-world/" data-id="cjjkrorbg0001q0l2wp91vyc6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/hello-world/" data-id="cjjr8ihe50007o0l2tbowokdx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1019,6 +1123,10 @@ git rebase
       <ul>
         
           <li>
+            <a href="/2018/07/18/高性能MySQL之Schema与数据类型优化/">高性能MySQL之:Schema与数据类型优化</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/14/JDBC学习笔记/">JDBC 学习笔记</a>
           </li>
         
@@ -1032,10 +1140,6 @@ git rebase
         
           <li>
             <a href="/2018/07/07/Docker学习笔记/">Docker 学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/07/Git学习笔记/">Git学习笔记</a>
           </li>
         
       </ul>
