@@ -62,6 +62,164 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-RabbitMQ学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/05/RabbitMQ学习笔记/" class="article-date">
+  <time datetime="2018-08-05T09:47:53.043Z" itemprop="datePublished">2018-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/05/RabbitMQ学习笔记/">RabbitMQ学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="RabbitMQ基本概念和特性"><a href="#RabbitMQ基本概念和特性" class="headerlink" title="RabbitMQ基本概念和特性"></a>RabbitMQ基本概念和特性</h2><pre><code>MQ全称Message Queue消息队列,RabbitMQ是基于AMQP(高级消息队列协议)实现的。
+
+消息队列通常用以应用之间相互通信解决同步问题.MQ是典型的生产者消费者模型,RabbitMQ最常用的三种模式是Direct模式、Topic模式、Fanout模式.
+</code></pre><center><img src="https://i.imgur.com/TXsyyY0.png" alt="生产者消费者模型"></center>
+
+<hr>
+<pre><code>RabbitMQ特性
+1、Reliabliity(可靠性):
+RabbitMQ offers a variety of features to let you trade off performance with reliability, including persistence, delivery acknowledgements, publisher confirms, and high availability.
+2、Flexible Routing(灵活的路由机制):
+Messages are routed through exchanges before arriving at queues. RabbitMQ features several built-in exchange types for typical routing logic. For more complex routing you can bind exchanges together or even write your own exchange type as a plugin.
+3、Clustering(集群功能):
+Several RabbitMQ servers on a local network can be clustered together, forming a single logical broker.
+4、Highly Available Queues(高度可用队列):
+Queues can be mirrored across several machines in a cluster, ensuring that even in the event of hardware failure your messages are safe.
+5、Multi-protocol(多协议支持):
+RabbitMQ supports messaging over a variety of messaging protocols.
+6、Many Clients(多客户端支持):
+There are RabbitMQ clients for almost any language you can think of.
+7、Management UI(图形管理界面):
+RabbitMQ ships with an easy-to use management UI that allows you to monitor and control every aspect of your message broker.
+
+etc …
+</code></pre><hr>
+<h2 id="RabbitMQ应用场景"><a href="#RabbitMQ应用场景" class="headerlink" title="RabbitMQ应用场景"></a>RabbitMQ应用场景</h2><pre><code>1）信息的发送者和接收者如何维持这个连接，如果一方的连接中断，这期间的数据如何方式丢失？(宕机处理)
+2）如何降低发送者和接收者的耦合度？(解耦)
+3）如何让Priority高的接收者先接到数据？
+4）如何做到load balance？有效均衡接收者的负载？(负载均衡)
+5）如何有效的将数据发送到相关的接收者？也就是说将接收者subscribe 不同的数据，如何做有效的filter。(路由)
+6）如何做到可扩展，甚至将这个通信模块发到cluster上？
+7）如何保证接收者接收到了完整，正确的数据？(稳定性)
+</code></pre><p><strong>总结:消息中间件主要的两个功能解耦和异步处理</strong></p>
+<hr>
+<h2 id="RabbitMQ安装介绍"><a href="#RabbitMQ安装介绍" class="headerlink" title="RabbitMQ安装介绍"></a>RabbitMQ安装介绍</h2><pre><code>1、rabbitMQ是由erlang语言开发的,所以必须先有安装erlang，类似java安装
+2、rabbitMQ是C/S模式的，所以安装rabbitMQ服务器，傻瓜安装默认端口5672
+3、推荐最好也安装上rabbitMQ 的web管理界面(默认端口15672) 当然使用rabbitctl命令也可以
+</code></pre><hr>
+<h3 id="专业术语"><a href="#专业术语" class="headerlink" title="专业术语"></a>专业术语</h3><pre><code>Producer:消息生产者
+Consumer:消息消费者
+Queue:缓存消息的容器(队列)
+Message:消费者真正需要的消息数据
+Connection:一个tcp连接(应用与MQ服务器的连接),相对比较耗资源
+Channel:管道连接,是tcp连接内的连接,相对比较节约资源,大部分操作都是基于channel实现
+Exchange:消息路由,生产者发送消息并不是直接发送到队列中的而是先到指定方式路由中，然后由路由根据路由key绑定的队列发送到指定队列中。
+Binding:指队列和路由之间的绑定
+Routing key:路由key,通过路由key路由到指定队列
+AMQP:高级消息队列协议,RabbitMQ是基于此协议实现的
+virtual host:主要作用就是用来隔离的
+Users:RabbitMQ服务是基于C/S模式,通常连接都需要认证
+</code></pre><hr>
+<h2 id="RabbitMQ开发使用"><a href="#RabbitMQ开发使用" class="headerlink" title="RabbitMQ开发使用"></a>RabbitMQ开发使用</h2><h3 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h3><pre><code>1、获得与RabbitMQ服务器的连接
+
+ ConnectionFactory factory = new ConnectionFactory();//创建连接工厂对象
+ factory.setHost(hostName);//指定主机名
+ factory.setPort(portNumber);//指定端口号
+ factory.setVirtualHost(virtualHost);//指定RabbitMQ服务器的虚拟主机
+ factory.setUsername(username);//指定连接用户名
+ factory.setPassword(password);//指定连接用户密码
+ Connection conn = factory.newConnection();//创建连接
+
+备注:由于这个Conneciton连接是一个TCP连接相对比较耗资源,通常我们都会在其内部创建管道连接来操作RabbitMQ.
+
+//open a channel
+ Channel channel = conn.createChannel();
+
+2、声明路由和使用的路由类型以及声明队列名称
+
+3、发送消息Publish或接受消息Consume
+
+备注:声明队列是幂等的,只有队列不存在时才会创建队列.
+</code></pre><p><strong>RabbitMQ Consumer 获取消息的两种方式(poll、subscribe)</strong></p>
+<pre><code>1、Subscribe订阅方式
+代码如下:
+
+Consumer consumer = new DefaultConsumer(channel) {
+        public void handleDelivery(String consumerTag, com.rabbitmq.client.Envelope envelope,
+                com.rabbitmq.client.AMQP.BasicProperties properties, byte[] body) throws java.io.IOException {
+            //使用以上的几个入参来处理信息
+            // doSomething ...
+        };
+
+2、poll API方式(轮询方式)
+
+channel.basicGet(String queue, boolean autoAck);
+
+备注:相比而言使用轮询方式效率更低效推荐使用订阅方式
+</code></pre><hr>
+<h2 id="RabbitMQ三种路由方式"><a href="#RabbitMQ三种路由方式" class="headerlink" title="RabbitMQ三种路由方式"></a>RabbitMQ三种路由方式</h2><center><img src="https://i.imgur.com/sMmUan1.png" alt=""></center>
+
+<h3 id="一、Direct-Exchange-直接路由"><a href="#一、Direct-Exchange-直接路由" class="headerlink" title="一、Direct Exchange(直接路由)"></a>一、Direct Exchange(直接路由)</h3><pre><code>任何发送到Direct Exchange的消息都会被转发到RouteKey中指定的Queue。
+
+1.一般情况可以使用rabbitMQ自带的Exchange:&quot;(该Exchange的名字为空字符串，下文称其为default Exchange)。
+2.这种模式下不需要将Exchange进行任何绑定(binding)操作
+3.消息传递时需要一个“RouteKey”，可以简单的理解为要发送到的队列名字。
+4.如果vhost中不存在RouteKey中指定的队列名，则该消息会被抛弃。
+</code></pre><center><img src="https://i.imgur.com/uPsgpJ2.png" alt="Direct模式"></center>
+
+
+<h3 id="二、Fanout-Exchange-广播路由）"><a href="#二、Fanout-Exchange-广播路由）" class="headerlink" title="二、Fanout Exchange(广播路由）"></a>二、Fanout Exchange(广播路由）</h3><pre><code>任何发送到Fanout Exchange的消息都会被转发到与该Exchange绑定(Binding)的所有Queue上。
+
+1.可以理解为路由表的模式
+2.这种模式不需要RouteKey
+3.这种模式需要提前将Exchange与Queue进行绑定，一个Exchange可以绑定多个Queue，一个Queue可以同多个Exchange进行绑定。
+4.如果接受到消息的Exchange没有与任何Queue绑定，则消息会被抛弃
+</code></pre><center><img src="https://i.imgur.com/6gleXbF.png" alt="Fanout模式"></center>
+
+<h3 id="三、Topic-Exchange-主题订阅模式路由"><a href="#三、Topic-Exchange-主题订阅模式路由" class="headerlink" title="三、Topic Exchange(主题订阅模式路由)"></a>三、Topic Exchange(主题订阅模式路由)</h3><pre><code>任何发送到Topic Exchange的消息都会被转发到所有关心RouteKey中指定话题的Queue上
+
+1.这种模式较为复杂，简单来说，就是每个队列都有其关心的主题，所有的消息都带有一个“标题”(RouteKey)，Exchange会将消息转发到所有关注主题能与RouteKey模糊匹配的队列。
+2.这种模式需要RouteKey，也许要提前绑定Exchange与Queue。
+3.在进行绑定时，要提供一个该队列关心的主题，如“#.log.#”表示该队列关心所有涉及log的消息(一个RouteKey为”MQ.log.error”的消息会被转发到该队列)。
+4.“#”表示0个或若干个关键字，“*”表示一个关键字。如“log.*”能与“log.warn”匹配，无法与“log.warn.timeout”匹配；但是“log.#”能与上述两者匹配。
+5.同样，如果Exchange没有发现能够与RouteKey匹配的Queue，则会抛弃此消息。
+</code></pre><center><img src="https://i.imgur.com/j1dLchP.png" alt="Topic模式"></center>
+
+<p><strong>备注:topic Exchange是三种模式中最灵活和最通用的模式，通常情况推荐使用.</strong></p>
+<pre><code>Topic exchange is powerful and can behave like other exchanges.
+
+When a queue is bound with &quot;#&quot; (hash) binding key - it will receive all the messages, regardless of the routing key - like in fanout exchange.
+
+When special characters &quot;*&quot; (star) and &quot;#&quot; (hash) aren&apos;t used in bindings, the topic exchange will behave just like a direct one.
+</code></pre><hr>
+<h2 id="队列和消息属性配置-持久化、ack机制"><a href="#队列和消息属性配置-持久化、ack机制" class="headerlink" title="队列和消息属性配置(持久化、ack机制)"></a>队列和消息属性配置(持久化、ack机制)</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/05/RabbitMQ学习笔记/" data-id="cjkgo0r9g0004bcl27ggrrm5y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-高性能MySQL之Schema与数据类型优化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/18/高性能MySQL之Schema与数据类型优化/" class="article-date">
@@ -160,7 +318,7 @@ DATETIME存储的范围是1001到9999年,TIMESTAMP存储的范围时间是1970�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/18/高性能MySQL之Schema与数据类型优化/" data-id="cjjr8meyy0009z8l28dvb0pae" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/18/高性能MySQL之Schema与数据类型优化/" data-id="cjkgo0ra00008bcl27exq8mbb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +405,7 @@ ResultSet可以抽象成table表,刚开始游标在第一行记录之上,游标�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/JDBC学习笔记/" data-id="cjjr8mey30002z8l2fufe901d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/JDBC学习笔记/" data-id="cjkgo0r9o0005bcl248fnppt1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,7 +484,7 @@ linux地址:https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/08/使用vps科学上网/" data-id="cjjr8meyy000cz8l2uoqt1nju" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/08/使用vps科学上网/" data-id="cjkgo0r970002bcl2fwpm9sxb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -703,134 +861,7 @@ top -p:通过指定监控进程id来监控某个进程的状态
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/Linux学习笔记/" data-id="cjjr8meyi0003z8l26x05r4go" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Docker学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/07/Docker学习笔记/" class="article-date">
-  <time datetime="2018-07-07T13:47:35.450Z" itemprop="datePublished">2018-07-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/07/Docker学习笔记/">Docker 学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Docker-学习笔记"><a href="#Docker-学习笔记" class="headerlink" title="Docker 学习笔记"></a>Docker 学习笔记</h1><hr>
-<pre><code>Docker项目的目标是实现轻量级的操作系统虚拟化解决方案.
-docker的基础是linux容器(LXC)等技术,在LXC的基础上Docker进行了进一步的封装,让用户不需要关心容器的管理,使得操作更为简便.
-</code></pre><p><strong>为什么要使用Docker</strong></p>
-<pre><code>1、更快速的交付和部署
-2、高效的虚拟化
-3、轻松的歉意和扩展
-4、简单的管理
-</code></pre><p><strong>容器与虚拟机对比</strong></p>
-<pre><code>| 特性           |      容器              |  虚拟机 
-|----------        |:-------------:        |------:
-|特性            |容器                     |虚拟机
-|启动            |秒级别                     |分钟级别
-|硬盘使用        |较小                     |较大
-|性能             |接近原生                 |弱于原生
-|系统支持量        |单机支持上千个容器        |一般几十个
-</code></pre><hr>
-<h2 id="Docker三大组件"><a href="#Docker三大组件" class="headerlink" title="Docker三大组件"></a>Docker三大组件</h2><p><strong>镜像(image)</strong></p>
-<p>镜像:image就是一个只读模板,就是一个静态文件</p>
-<p><strong>镜像相关命令</strong></p>
-<pre><code>获取镜像
-    docker pull
-
-列出本地镜像
-    docker images
-
-删除本地镜像(删除镜像之前需要先删除,该镜像所有的容器)
-    docker rmi image
-</code></pre><p><strong>创建镜像</strong></p>
-<pre><code>1、修改已有镜像
-    先使用下载的镜像启动容器 docker run -t -i imageName /bin/bash
-    当修改完之后,exit.然后docker commit -m &quot;updateMessage&quot; -a &quot;用户信息&quot; 容器id 仓库名和tag信息
-
-
-2、使用Dockerfile来创建镜像
-</code></pre><p><strong>导入和导出镜像</strong></p>
-<pre><code>docker save imageId &gt; image.tar
-
-docker load &lt; image.tar
-</code></pre><p><strong>容器(Container)</strong></p>
-<pre><code>容器:容器是镜像运行的实例,它可以被启动、开始、停止、删除.每个容器都是相互隔离的,保证安全的平台.
-</code></pre><p><strong>启动容器有两种方式</strong></p>
-<pre><code>1、基于镜像新建一个容器并启动
-2、将在终止状态的容器重新启动
-备注:由于docker容器比较轻量级,通常我们会删除和新创建容器
-</code></pre><p><strong>新建并启动容器</strong></p>
-<pre><code>docker run image
-docker run -it ubuntu:14.04 /bin/bash (进入交互模式)
-docker run -d ubuntu:14.04(进入守线程模式)
-</code></pre><p><strong>利用docker run来创建容器时,docker在后台运行的标准操作包括</strong></p>
-<pre><code>检查本地是否存在指定的镜像,不存在就从公有仓库下载
-利用镜像创建并启动一个容器
-分配一个文件系统,并在只读的镜像层外面挂载一层可读写层
-从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中
-从地址池配置一个ip地址给容器
-执行用户指定的应用程序
-执行完毕后容器被终止
-</code></pre><p><strong>导入和导出容器</strong></p>
-<pre><code>docker export 容器id &gt; newName.tar
-cat name.tar | docker import - test
-
-
-删除容器
-docker rm containerName
-</code></pre><p><strong>仓库(Repository)</strong></p>
-<pre><code>仓库:仓库是存放镜像文件的地方,类似maven中的仓库概念.docker公司有提供一个docker hub仓库类似github
-
-
-一个容易混淆的概念是注册服务器,实际上注册服务器是管理仓库的具体服务器,每个服务器上可以有多个仓库,而每个仓库下面有多个镜像.
-从这方面来说,仓库可以被认为是一个具体的项目或目录.
-
-对于仓库地址dockerhub.com/centos来说,dockerhub.com是注册服务器地址,    centos是仓库名
-</code></pre><p><strong>DockerHub</strong></p>
-<pre><code>目前docker官方维护的一个公共仓库dockerhub,大部分需求都可以直接从dockerhub上直接下载镜像实现.
-
-登入操作
-    docker login
-
-检索镜像
-    docker search
-</code></pre><p><strong>私有仓库</strong></p>
-<pre><code>有时候使用dockerhub公有仓库可能不方便,那么可以搭建自己的本地仓库.
-
-安装运行docker-registry
-</code></pre><hr>
-<p><strong>docker 网络功能</strong></p>
-<pre><code>映射端口
-docker run -d -p 9000:8080 tomcat(9000为本地端口,8080为容器端口)
-
-查看映射端口配置
-docker port
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/Docker学习笔记/" data-id="cjjr8mexn0000z8l2ba4fxzmz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/Linux学习笔记/" data-id="cjkgo0r9c0003bcl2z60mdt9j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1034,7 +1065,134 @@ git rebase
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/Git学习笔记/" data-id="cjjr8mey30001z8l237m9x1b9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/Git学习笔记/" data-id="cjkgo0r7s0000bcl2gex1dcqb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Docker学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/Docker学习笔记/" class="article-date">
+  <time datetime="2018-07-07T13:47:35.450Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/07/Docker学习笔记/">Docker 学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Docker-学习笔记"><a href="#Docker-学习笔记" class="headerlink" title="Docker 学习笔记"></a>Docker 学习笔记</h1><hr>
+<pre><code>Docker项目的目标是实现轻量级的操作系统虚拟化解决方案.
+docker的基础是linux容器(LXC)等技术,在LXC的基础上Docker进行了进一步的封装,让用户不需要关心容器的管理,使得操作更为简便.
+</code></pre><p><strong>为什么要使用Docker</strong></p>
+<pre><code>1、更快速的交付和部署
+2、高效的虚拟化
+3、轻松的歉意和扩展
+4、简单的管理
+</code></pre><p><strong>容器与虚拟机对比</strong></p>
+<pre><code>| 特性           |      容器              |  虚拟机 
+|----------        |:-------------:        |------:
+|特性            |容器                     |虚拟机
+|启动            |秒级别                     |分钟级别
+|硬盘使用        |较小                     |较大
+|性能             |接近原生                 |弱于原生
+|系统支持量        |单机支持上千个容器        |一般几十个
+</code></pre><hr>
+<h2 id="Docker三大组件"><a href="#Docker三大组件" class="headerlink" title="Docker三大组件"></a>Docker三大组件</h2><p><strong>镜像(image)</strong></p>
+<p>镜像:image就是一个只读模板,就是一个静态文件</p>
+<p><strong>镜像相关命令</strong></p>
+<pre><code>获取镜像
+    docker pull
+
+列出本地镜像
+    docker images
+
+删除本地镜像(删除镜像之前需要先删除,该镜像所有的容器)
+    docker rmi image
+</code></pre><p><strong>创建镜像</strong></p>
+<pre><code>1、修改已有镜像
+    先使用下载的镜像启动容器 docker run -t -i imageName /bin/bash
+    当修改完之后,exit.然后docker commit -m &quot;updateMessage&quot; -a &quot;用户信息&quot; 容器id 仓库名和tag信息
+
+
+2、使用Dockerfile来创建镜像
+</code></pre><p><strong>导入和导出镜像</strong></p>
+<pre><code>docker save imageId &gt; image.tar
+
+docker load &lt; image.tar
+</code></pre><p><strong>容器(Container)</strong></p>
+<pre><code>容器:容器是镜像运行的实例,它可以被启动、开始、停止、删除.每个容器都是相互隔离的,保证安全的平台.
+</code></pre><p><strong>启动容器有两种方式</strong></p>
+<pre><code>1、基于镜像新建一个容器并启动
+2、将在终止状态的容器重新启动
+备注:由于docker容器比较轻量级,通常我们会删除和新创建容器
+</code></pre><p><strong>新建并启动容器</strong></p>
+<pre><code>docker run image
+docker run -it ubuntu:14.04 /bin/bash (进入交互模式)
+docker run -d ubuntu:14.04(进入守线程模式)
+</code></pre><p><strong>利用docker run来创建容器时,docker在后台运行的标准操作包括</strong></p>
+<pre><code>检查本地是否存在指定的镜像,不存在就从公有仓库下载
+利用镜像创建并启动一个容器
+分配一个文件系统,并在只读的镜像层外面挂载一层可读写层
+从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中
+从地址池配置一个ip地址给容器
+执行用户指定的应用程序
+执行完毕后容器被终止
+</code></pre><p><strong>导入和导出容器</strong></p>
+<pre><code>docker export 容器id &gt; newName.tar
+cat name.tar | docker import - test
+
+
+删除容器
+docker rm containerName
+</code></pre><p><strong>仓库(Repository)</strong></p>
+<pre><code>仓库:仓库是存放镜像文件的地方,类似maven中的仓库概念.docker公司有提供一个docker hub仓库类似github
+
+
+一个容易混淆的概念是注册服务器,实际上注册服务器是管理仓库的具体服务器,每个服务器上可以有多个仓库,而每个仓库下面有多个镜像.
+从这方面来说,仓库可以被认为是一个具体的项目或目录.
+
+对于仓库地址dockerhub.com/centos来说,dockerhub.com是注册服务器地址,    centos是仓库名
+</code></pre><p><strong>DockerHub</strong></p>
+<pre><code>目前docker官方维护的一个公共仓库dockerhub,大部分需求都可以直接从dockerhub上直接下载镜像实现.
+
+登入操作
+    docker login
+
+检索镜像
+    docker search
+</code></pre><p><strong>私有仓库</strong></p>
+<pre><code>有时候使用dockerhub公有仓库可能不方便,那么可以搭建自己的本地仓库.
+
+安装运行docker-registry
+</code></pre><hr>
+<p><strong>docker 网络功能</strong></p>
+<pre><code>映射端口
+docker run -d -p 9000:8080 tomcat(9000为本地端口,8080为容器端口)
+
+查看映射端口配置
+docker port
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/Docker学习笔记/" data-id="cjkgo0r840001bcl24w2c9liz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1079,7 +1237,7 @@ git rebase
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/hello-world/" data-id="cjjr8meyi0004z8l2ff1az7uk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/hello-world/" data-id="cjkgo0r9y0007bcl2xszvridp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1114,7 +1272,7 @@ git rebase
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
     </div>
   </div>
 
@@ -1125,6 +1283,10 @@ git rebase
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/08/05/RabbitMQ学习笔记/">RabbitMQ学习笔记</a>
+          </li>
         
           <li>
             <a href="/2018/07/18/高性能MySQL之Schema与数据类型优化/">高性能MySQL之:Schema与数据类型优化</a>
@@ -1140,10 +1302,6 @@ git rebase
         
           <li>
             <a href="/2018/07/07/Linux学习笔记/">Linux 学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/07/Docker学习笔记/">Docker 学习笔记</a>
           </li>
         
       </ul>
